@@ -1,5 +1,5 @@
-angular.module('myApp', [])
-    .controller('SignInController',  ['$scope','$rootScope','$location', function ($scope, $rootScope, $location) {
+angular.module('myApp', ['ui.router', 'ui.bootstrap'])
+    .controller('myController',  ['$scope','$rootScope','$location', function ($scope, $rootScope, $location) {
 
         $scope.username = '';
         $scope.pw = '';
@@ -10,14 +10,21 @@ angular.module('myApp', [])
                 var UserClass = Parse.Object.extend("Users");
                 var query = new Parse.Query(UserClass);
                 
+                // search Parse for login credentials
                 query.find( {
                     success: function(results) {
                         for (var i=0; i<results.length; i++) {
                             if (results[i].get("username") == $scope.username &&
                                 results[i].get("password") == $scope.password) {
-                                    $rootScope.current_user = $scope.username;
+                                    
+                                    // set 'session' for current user
+                                    $rootScope.currentUser = $scope.username;
+                                   
+                                    // store that information in the browser
                                     localStorage.loggedin = true;
-                                    localStorage.current_user = $scope.username;
+                                    localStorage.currentUser = $scope.username;
+
+                                    // redirect to index
                                     $location.path('/');
                             }
                         }

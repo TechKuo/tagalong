@@ -64,11 +64,7 @@ myApp.config( function($stateProvider, $urlRouterProvider) {
 
 myApp.run(['$rootScope', '$location', function($rootScope, $location) {
 
-  $rootScope.user = {
-    username: "",
-    password: "",
-    loggedOn: false
-  };
+  $rootScope.current_user = "";
   
   Parse.initialize("0jzPCnJyCDiuodshWSVBV9ZosBAFo0x5u4Ir7cAB", "9nxpPoT3YzKnENQC6BRn9k0nbXqlxMqF3BCOagFM");
 

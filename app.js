@@ -31,6 +31,11 @@ myApp.config( function($stateProvider, $urlRouterProvider) {
     templateUrl: 'partial/browseEvents.html'
   }); 
 
+  $stateProvider.state('login', {
+    url:'/login',
+    templateUrl: 'signin.html'
+  });
+
   $stateProvider.state('rest_details', {
       url:'/rest_details/{itemId}',
       templateUrl: 'partial/rest_details.html',
@@ -56,6 +61,31 @@ myApp.config( function($stateProvider, $urlRouterProvider) {
   });
    
 });
+
+app.run(['$rootScope', '$location', function($rootScope, $location) {
+
+  $rootScope.user = {
+    username: "",
+    password: "",
+    loggedOn: false
+  };
+  
+  Parse.initialize("0jzPCnJyCDiuodshWSVBV9ZosBAFo0x5u4Ir7cAB", "9nxpPoT3YzKnENQC6BRn9k0nbXqlxMqF3BCOagFM");
+
+  var TestObject = Parse.Object.extend("TestObject");
+  var testObject = new TestObject();
+  testObject.save({foo: "bar"}).then(function(object) {
+    alert("yay! it worked");
+  });
+
+  $rootScope.$on('$locationChangeStart', function(event, next, current) {
+      if (!localStorage.loggedin) {
+          $location.path('/login')
+      }
+  })
+
+}]);
+
 
 // myApp.filter('customOrderBy',function(){
 

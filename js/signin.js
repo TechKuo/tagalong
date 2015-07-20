@@ -20,13 +20,8 @@ angular.module('myApp')
                             if (results[i].get("username") == $scope.username &&
                                 results[i].get("password") == $scope.password) {
                                     
-
                                     // set 'session' for current user
                                     $rootScope.currentUser = $scope.username;
-                                   
-                                    // store that information in the browser
-                                    localStorage.loggedin = true;
-                                    localStorage.currentUser = $scope.username;
 
                                     // redirect to index
                                     $location.path('/myEvents');

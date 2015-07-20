@@ -1,5 +1,5 @@
-angular.module('firstModule', [])
-    .controller('SignInController',  ['$scope','$http','$location', function ($scope, $http, $location) {
+angular.module('myApp', [])
+    .controller('SignInController',  ['$scope','$rootScope','$location', function ($scope, $rootScope, $location) {
 
         $scope.username = '';
         $scope.pw = '';
@@ -7,26 +7,23 @@ angular.module('firstModule', [])
 
        $scope.signin = function(){
             if ($scope.username && $scope.pw){
-                console.log("username is " + $scope.username);
-                console.log("password is " + $scope.pw);
+                var UserClass = Parse.Object.extend("Users");
+                var query = new Parse.Query(UserClass);
                 
-                var data = {
-                    attuid: $scope.username,
-                    password: $scope.pw
-                };
-
-                console.log(data);
-
-                console.log("data sent in is " + data);
-
-                $http.post("http://localhost:4567/login", data).success(function(data, status){
-                    console.log(data);
-                    console.log(status);
-                }).
-                error(function(){
-                    console.log("data returned is " + data);
-                    console.log("status returned is " + status);
-                    $scope.loginError = true;
+                query.find( {
+                    success: function(results) {
+                        for (var i=0; i<results.length; i++) {
+                            if (results[i].get("username") == $scope.username &&
+                                results[i].get("password") == $scope.password) {
+                                    $rootScope.current_user = $scope.username;
+                                    localStorage.loggedin = true;
+                                    localStorage.current_user = $scope.username;
+                                    $location.path('/');
+                            }
+                        }
+                    }, error: function(results) {
+                        $scope.loginError = true;
+                    }
                 });
             }
         };

@@ -62,7 +62,7 @@ myApp.config( function($stateProvider, $urlRouterProvider) {
    
 });
 
-app.run(['$rootScope', '$location', function($rootScope, $location) {
+myApp.run(['$rootScope', '$location', function($rootScope, $location) {
 
   $rootScope.user = {
     username: "",

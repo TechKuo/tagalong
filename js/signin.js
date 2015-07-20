@@ -1,5 +1,5 @@
-angular.module('firstModule', ['ui.router', 'ui.bootstrap'])
-    .controller('myController',  ['$scope','$rootScope','$location', function ($scope, $rootScope, $location) {
+angular.module('myApp', ['ui.router', 'ui.bootstrap'])
+    .controller('SignInController',  ['$scope','$rootScope','$location', function ($scope, $rootScope, $location) {
 
         $scope.username = '';
         $scope.pw = '';

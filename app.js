@@ -33,7 +33,8 @@ myApp.config( function($stateProvider, $urlRouterProvider) {
 
   $stateProvider.state('login', {
     url:'/login',
-    templateUrl: 'signin.html'
+    templateUrl: 'signin.html',
+    controller: 'myController'
   });
 
   $stateProvider.state('rest_details', {

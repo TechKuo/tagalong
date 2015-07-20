@@ -36,6 +36,16 @@ angular.module('ngMailChimp', ['ngAria', 'ngMessages', 'ngAnimate'])
             return ctrl.signupForm[field].$touched || ctrl.signupForm.$submitted
         };
 
+        // populate dropdowns from back end
+        ctrl.departments = [];
+        ctrl.locations = [];
+        $http.get('http://localhost:4567/departments').then(function(result){
+            ctrl.departments = result.data;
+        });
+        $http.get('http://localhost:4567/locations').then(function(result){
+            ctrl.locations = result.data;
+        });
+
         ctrl.showEmailPrompt = false;
         ctrl.showUsernamePrompt = false;
         ctrl.showSubmittedPrompt = false;

@@ -22,12 +22,15 @@ angular.module('myApp')
                                     
                                     // set 'session' for current user
                                     $rootScope.currentUser = $scope.username;
+                                    $rootScope.loggedIn = true;
 
                                     // redirect to index
                                     $location.path('/myEvents');
+                                    if(!$scope.$$phase) $scope.$apply();
                             }
                             else {
                                 $scope.loginError = true;
+                                if(!$scope.$$phase) $scope.$apply();
                             }
                         }
                     }, error: function(results) {

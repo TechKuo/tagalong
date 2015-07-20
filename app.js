@@ -37,6 +37,12 @@ myApp.config( function($stateProvider, $urlRouterProvider) {
     controller: 'SignInController'
   });
 
+  $stateProvider.state('register',{
+    url:'/register',
+    templateUrl: 'signup.html',
+    controller: 'SignUpController'
+  });
+
   $stateProvider.state('rest_details', {
       url:'/rest_details/{itemId}',
       templateUrl: 'partial/rest_details.html',
@@ -66,13 +72,19 @@ myApp.config( function($stateProvider, $urlRouterProvider) {
 myApp.run(['$rootScope', '$location', function($rootScope, $location) {
 
   $rootScope.currentUser = "";
+  $rootScope.loggedIn = false;
+
+  $rootScope.logout = function() {
+    $rootScope.currentUser = "";
+    $rootScope.loggedIn = false;
+};
   
   Parse.initialize("0jzPCnJyCDiuodshWSVBV9ZosBAFo0x5u4Ir7cAB", "9nxpPoT3YzKnENQC6BRn9k0nbXqlxMqF3BCOagFM");
 
   $rootScope.$on('$locationChangeStart', function(event, next, current) {
-      if ($rootScope.currentUser == "") {
+      /*if (!$rootScope.loggedIn) {
           $location.path('/login');
-      }
+      }*/
   })
 
 }]);

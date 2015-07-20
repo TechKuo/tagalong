@@ -1,0 +1,124 @@
+<html ng-app="ngCreateEvent">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <script type="text/javascript" src="lib/js/jquery.js"></script>
+   <link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.css">
+   <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css"/>
+   <link rel="stylesheet" href="css/style_justin.css"/>
+   <link rel="stylesheet" href="css/animations.css"/>
+   <link rel="stylesheet" href="css/jquery.timepicker.css"/>
+
+
+</head>
+
+<body ng-controller= "CreateEventController as ctrl">
+  <div class="signup-wrapper">
+
+    <div class="alert alert-success message-animation" role="alert" ng-if="ctrl.showCreatedPrompt">
+      Your event has been created successfully.
+    </div>
+
+    <form name="ctrl.createEventForm" ng-submit="ctrl.createEvent()" novalidate>
+
+      <div class="form-group">
+        <label for="restaurant name">Restaurant Name</label>
+        <input id="restaurantName" class="form-control" type="text" name="restaurantName">
+
+
+            <!-- Insert restaurant name here -->
+
+      </div>
+      </div>
+      <div class="form-group" ng-class="{'has-error':ctrl.hasErrorClass('eventDate')}">
+        <label for="eventDate">Please Select Event Date</label>
+          <input id="eventDate" type="text" class="form-control" name="eventDate" >
+
+            <script>
+            $(function() {
+              $("#eventDate").datetimepicker({timepicker:false,format:'m.d.Y'});
+            });
+            </script>
+
+            <div class="my-messages" ng-messages="ctrl.createEventForm.eventDate.$error" ng-if="ctrl.showMessages('eventDate')">
+                  <div class="message-animation" ng-message="required">
+                      <strong>This field is required.</strong>
+                  </div>
+            </div>
+
+        </div>
+
+      <div class="form-group" ng-class="{'has-error':ctrl.hasErrorClass('startTime')}">
+        <label for="startTime">Please Select Start Time</label> 
+          <input id="startTime"class="form-control" type="text" name="startTime">
+          
+          <script>
+          $(function() {
+            $("#startTime").timepicker({interval:15,minHour:6, maxHour:20,timeFormat:"hh:mm p"});
+          });    
+          </script>
+
+           <div class="my-messages" ng-messages="ctrl.createEventForm.startTime.$error" ng-if="ctrl.showMessages('startTime')">
+                  <div class="message-animation" ng-message="required">
+                      <strong>This field is required.</strong>
+                  </div>
+            </div>
+      </div>
+
+      <div class="form-group" ng-class="{'has-error':ctrl.hasErrorClass('endTime')}">
+        <label for="endTime">Please Select End Time </label> 
+          <input id="endTime" class="form-control" type="text" name="startTime">
+          
+          <script>
+          $(function() {
+            $("#endTime").timepicker({interval:15,minHour:6, maxHour:20, timeFormat:"hh:mm p"});
+          });    
+          </script>
+
+           <div class="my-messages" ng-messages="ctrl.createEventForm.endTime.$error" ng-if="ctrl.showMessages('endTime')">
+                  <div class="message-animation" ng-message="required">
+                      <strong>This field is required.</strong>
+                  </div>
+            </div>
+      </div>
+
+      <div class="form-group">
+        <label for="inviteList">Invite Friends: </label>
+          <input id="inviteList" class="form-control" type="text" name="inviteList">
+      </div>
+
+      <div class="dropDown">
+        <label for="eventType">Please Select Event Type</label>
+        <select required>
+          <option value="Public">Public</option>
+          <option value="Private">Private</option>
+        </select>
+      </div>
+
+      <p></p>
+
+      <div clas="form-group">
+        <label for="comments">Comments<p></p><Comments</label>
+        <textarea name="comments"id="comments" cols="35" rows="3"></textarea>
+      </div>
+
+      <p></p>
+
+    <div>
+      <center><button class="button button-primary" type="submit">Create Event!</button></center>
+    </div>
+      
+    </form>
+
+    <script type="text/javascript" src="lib/angular/angular.min.js"></script>
+    <script type="text/javascript" src="lib/angular/angular-aria.min.js"></script>
+    <script type="text/javascript" src="lib/angular/angular-messages.min.js"></script>
+    <script type="text/javascript" src="lib/angular/angular-animate.min.js"></script>
+    <script type="text/javascript" src="js/jquery.datetimepicker.js"></script>
+    <script type="text/javascript" src="js/jquery.timepicker.js"></script>
+    <script type="text/javascript" src="js/createEvent.js"></script>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<section class="artistinfo">
+  <div class="artist cf" ng-model="artists">
+<!--     <a href="#/details/{{prevItem}}" class="btn btn-left">&lt;</a>
+    <a href="#/details/{{nextItem}}" class="btn btn-right">&gt;</a> -->
+    <div class="info">
+      <div class="col-md-9">
+        <img ng-src="images/Restaurant Logos/{{restaurants[id].Restaurant}}.jpg" alt="Photo of {{restaurants[id].Restaurant}}"></img>
+        <h1>{{restaurants[id].Restaurant}}</h1>
+
+      
+        <h3>
+          <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> {{restaurants[id].Address}}</h3>
+        <h3> {{restaurants[id].Price}}</h3>
+        <h3>Rating: {{restaurants[id].Rating}}</h3>
+        <h3>
+          <span class="glyphicon glyphicon-tag" aria-hidden="true"></span> {{restaurants[id].Tags}}
+        </h3>
+        <h3>
+          <span class="glyphicon glyphicon-road" aria-hidden="true"></span> {{restaurants[id].Distance}} miles
+        </h3>
+        <h3>
+          <span class="glyphicon glyphicon-time" aria-hidden="true"></span>  {{restaurants[id].Hours}}
+        </h3>
+        <h3>
+          <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> {{restaurants[id].Phone}}
+        </h3>
+        <a ng-href="{{restaurants[id].Website}}">
+        <h3>
+        <span class="glyphicon glyphicon-link" aria-hidden="true"></span> {{restaurants[id].Website}}</h3>
+      
+      <!-- <div class="bio">{{artists[whichItem].Address}}</div> -->
+  
+        <a ng-href="employees.html#/restaurant">&laquo; Back to search</a>
+      </div>
+      <div class="col-md-3">
+        <button type="button" class="btn btn-primary btn-lg">
+          <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>Create Event
+        </button>
+
+      </div>
+    </div>
+</section>

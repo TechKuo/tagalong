@@ -1,0 +1,35 @@
+<!-- Top search bar -->
+<div class="search">
+	<h1>Browse Events</h1>
+	<label>search: </label>
+	<input ng-model="query" placeholder="Browse public events" autofocus> 
+
+	<label class="formgroup">by:
+	<select ng-model="eventOrder">
+		<option value="Day">Upcoming</option>
+		<!-- Come back to this one, change reknown to department -->
+		<option value="Restaurant">Restaurant</option>
+	</select>
+	</label>
+
+</div>
+
+
+<!-- List of restaurants -->
+<div class="container">
+	<ul class="list-group">
+
+		<li class="list-group-item" ng-repeat="item in browseEvents | filter: query | orderBy : browseEventsOrder ">
+			<span ng-class-odd="'odd'" ng-class-even="'even'">
+		    <!-- <a ng-href="#/myEvents/{{events.indexOf(item)}}"> -->
+			   <!-- <img ng-src="images/Restaurant Logos/{{value.Restaurant}}.jpg" alt="Photo of {{value.Restaurant}}"> -->
+				<a ng-href="{{item.Website}}">
+					<h2>{{item.Restaurant}}</h2>
+				</a>
+				<h3>{{item.Date}}{{item.Day}}</h3>
+				<h3>{{item.Time}}</h3>
+				<h3>Attending: {{item.Going}}</h3>
+				<h3>Invited: {{item.Invited}}</h3>            
+		</li>
+	</ul>
+</div>

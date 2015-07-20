@@ -1,0 +1,44 @@
+<!-- Top search bar -->
+		<div class="search">
+			<h1>Employee Search</h1>
+			<label>search: </label>
+			<input ng-model="query" placeholder="Search for employees" autofocus>
+
+			<label class="formgroup">by:
+			<select ng-model="artistOrder">
+				<option value="name">Name</option>
+				<!-- Come back to this one, change reknown to department -->
+				<option value="department">Department</option>
+			</select>
+			</label>
+<!-- 
+			<label class="formgroup">
+				<input type="radio" ng-model="direction" name="direction" checked> 
+				ascending
+			</label>
+			<label class="formgroup">
+				<input type="radio" ng-model="direction" name="direction" value="reverse">
+				descending
+			</label> -->
+		
+		</div>
+		
+		
+<!-- List of people -->
+		<ul class="artistlist">
+		<!--Should take them to individual details page  -->
+			<li class="artist cf" ng-repeat="name in artists | object2Array | orderBy : 'name' "{{artists.name}}>
+                <a ng-href="#/employee_details/{{key}}">
+                    <button type="button" class="btn btn-lg pull-right">
+                        <span class="glyphicon glyphicon-send" aria-hidden="true"></span>Invite
+                   	</button>
+
+                   <img class="displayed" ng-src="images/{{value.shortname}}_tn.jpg" alt="Photo of {{value.name}}">
+                   <div class="info">
+                        <!-- The below is | is a filter and makes the data appear as a filter -->
+                      <h2>{{value.name}}</h2>
+                      <h3>{{value.department}}</h3>
+                   </div>
+                </a>
+			</li>    
+		</ul>

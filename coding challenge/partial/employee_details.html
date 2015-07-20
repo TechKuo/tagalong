@@ -1,0 +1,22 @@
+<section class="artistinfo">
+  <div class="artist cf" ng-model="artists">
+<!--     <a href="#/details/{{prevItem}}" class="btn btn-left">&lt;</a>
+    <a href="#/details/{{nextItem}}" class="btn btn-right">&gt;</a> -->
+    <div class="info">
+      <button type="button" class="btn btn-primary btn-lg pull-right" >
+        <span class="glyphicon glyphicon-send" aria-hidden="true"></span>Invite
+      </button>
+
+      <img ng-src="images/{{artists[id].shortname}}_tn.jpg" alt="Photo of {{artists[id].name}}"></img>
+      <h1>{{artsists[id].name}}</h1>
+
+      
+      <h3>ATTID: {{artists[id].attID}}</h3>
+      <h3>Department: {{artists[id].department}}</h3>
+
+      
+      <!-- <div class="bio">{{artists[whichItem].Address}}</div> -->
+  
+      <a href="employees.html">&laquo; Back to search</a>
+    </div>
+</section>

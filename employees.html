@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	<meta charset="UTF-8" >
+  	<title>AT&T Tagalong</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+    <link href = "lib/bootstrap/css/bootstrap.css" rel = "stylesheet">
+  	<link rel="stylesheet" href="css/style_kathleen.css">
+    <!-- <link href = "css/hamburgerCSS.css" rel = "stylesheet"> -->
+  </head>
+
+  <body ng-app="myApp" class="main" ng-controller="MyController">
+  
+  <!-- <button class="ui-sref" ui-sref="details">this is a test button</button> -->
+  <!-- window for ui-router to populate -->
+
+
+      <nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo" style="color: #81017e">Logo</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><img src="images/tinypurple.png"/></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="employees.html#/myEvents" style="color: #81017e">myEvents</a></li>
+        <li><a href="employees.html#/restaurant" style="color: #81017e">Browse Restaurants</a></li>
+        <li><a href="employees.html#/browseEvents" style="color: #81017e">Browse Events</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="employees.html#/myEvents" style="color: #81017e">myEvents</a></li>
+        <li><a href="employees.html#/restaurant" style="color: #81017e">Browse Restaurants</a></li>
+        <li><a href="employees.html#/browseEvents" style="color: #81017e">Browse Events</a></li>
+      </ul>
+    </div>
+  </nav>
+
+      <div ui-view> 
+
+    </div>
+
+  <!-- importing dependencies.. -->
+   <!-- <script src="lib/js/protractor.js"></script> -->
+    <script src="lib/js/jquery.min.js"></script>
+    <script src="js/hamburgerMain.js"></script>
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular/angular-animate.min.js"></script>
+    <script src="lib/angular/angular-ui-router.min.js"></script>
+    <script src="lib/bootstrap/js/ui-bootstrap-0.13.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+
+  <!-- custom scripts -->
+
+    <script src="app.js"></script>
+    <script src="js/controllers2.js"></script>
+    <script type="text/javascript">
+      $(".button-collapse").sideNav();
+    </script>
+
+
+  </body>
+
+</html>	

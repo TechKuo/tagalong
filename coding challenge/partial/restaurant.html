@@ -1,0 +1,52 @@
+<!-- Top search bar -->
+		<div class="search">
+			<h1>Restaurant Search</h1>
+			<label>search: </label>
+			<input ng-model="query" placeholder="Search for restaurants" autofocus>
+
+			<label class="formgroup">by:
+			<select ng-model="restaurantOrder">
+				<option value="Restaurant">Name</option>
+				<!-- Come back to this one, change reknown to department -->
+				<option value="Distance">Distance</option>
+			</select>
+			</label>
+<!-- 
+			<label class="formgroup">
+				<input type="radio" ng-model="direction" name="direction" checked> 
+				ascending
+			</label>
+			<label class="formgroup">
+				<input type="radio" ng-model="direction" name="direction" value="reverse">
+				descending
+			</label> -->
+		
+		</div>
+		
+		
+<!-- List of restaurants -->
+		<ul class="artistlist">
+
+			<li class="artist cf" ng-repeat="(key,value) in restaurants | filter: query | orderBy : value.Distance ">
+				<div class="col-md-9">
+				    <a ng-href="#/rest_details/{{key}}">
+					   <img class="displayed" ng-src="images/Restaurant Logos/{{value.Restaurant}}.jpg" alt="Photo of {{value.Restaurant}}">
+					   <div class="info">
+							<!-- The below is | is a filter and makes the data appear as a filter -->
+						  <h2>{{value.Restaurant}}</h2>
+						  <h3>{{value.Distance + " mi"}} </h3>
+						  <h3>{{value.Price}}</h3>
+						  <h4 style="white-space: nowrap">{{value.Address}}</h4>
+						  <h4></h4>
+					   </div>
+	                </a>
+	            </div>
+	            <div class="col-md-3">
+	  			<button type="button" class="btn btn-primary btn-lg" style="white-space: normal">
+	  				 <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span> Create Event
+	  			</button>
+				</li>
+				</div>
+            
+
+		</ul>

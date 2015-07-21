@@ -366,8 +366,8 @@ img {
 }
 
 .btn-signin {
-  min-width: 80px;
-  max-width: 80px;
+  /*min-width: 80px;*/
+  max-width: 40%;
   min-height: 30px;
   max-height: 30px;
   font-size: 16px;

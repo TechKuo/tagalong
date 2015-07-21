@@ -18,9 +18,9 @@
 	<div class="container">
 		<ul class="list-group">
 			<li class="list-group-item" ng-repeat="item in restaurants | filter: query | orderBy : restaurantOrder">
-			   	<button type="button" class="btn btn-primary btn-lg pull-right">
+			   	<a ng-href="#/create_event/{{restaurants.indexOf(item)}}" class="btn btn-primary btn-lg pull-right">
   					<span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>  Create Event
-  				</button>
+  				</a>
   				<a ng-href="#/rest_details/{{restaurants.indexOf(item)}}">
 					<img class="pull-left" ng-src="images/Restaurant Logos/{{item.Restaurant}}.jpg" alt="Photo of {{item.Restaurant}}">
 					<!-- <div class="info"> -->
@@ -28,7 +28,6 @@
 				  	<h2>{{item.Restaurant}}</h2>
 				  	<h3>{{item.Distance + " mi"}} </h3>
 				 	<h3>{{item.Price}}</h3>
-
             	</a>
 			</li>
 		</ul>

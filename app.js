@@ -6,9 +6,9 @@ var myApp = angular.module('myApp', ['ui.router', 'ui.bootstrap']);
 // 
 myApp.config( function($stateProvider, $urlRouterProvider) {
 
-  $stateProvider.state('employees', {
+  $stateProvider.state('index', {
       url:'',
-      templateUrl: 'partial/list.html'
+      templateUrl: 'signin.html'
   });
    
   $stateProvider.state('list', {
@@ -66,17 +66,22 @@ myApp.config( function($stateProvider, $urlRouterProvider) {
     }
 
   });
+
+  $stateProvider.state('create_event', {
+    url: '/create_event/{itemId}',
+    templateUrl: 'partial/createEvent.html',
+    controller: 'CreateEventController'
+  });
    
 });
 
 myApp.run(['$rootScope', '$location', function($rootScope, $location) {
 
-  $rootScope.currentUser = "";
-  $rootScope.loggedIn = false;
-
   $rootScope.logout = function() {
-    $rootScope.currentUser = "";
-    $rootScope.loggedIn = false;
+    delete localStorage.loggedIn;
+    delete localStorage.currentUser;
+    delete localStorage.userName;
+    $location.path('/login');
 };
   
   Parse.initialize("0jzPCnJyCDiuodshWSVBV9ZosBAFo0x5u4Ir7cAB", "9nxpPoT3YzKnENQC6BRn9k0nbXqlxMqF3BCOagFM");
@@ -84,7 +89,10 @@ myApp.run(['$rootScope', '$location', function($rootScope, $location) {
   $rootScope.$on('$locationChangeStart', function(event, next, current) {
       // if user is not logged in and is trying to access a page besides the login or register page,
       // redirect that user to the login page
-      if (!$rootScope.loggedIn && $location.path() != "/register"){
+      console.log("localStorage.loggedIn is " + localStorage.loggedIn);
+      console.log("localStorage.currentUser is " + localStorage.currentUser);
+      console.log("localStorage.userName is " + localStorage.userName);
+      if (!localStorage.loggedIn && $location.path() != "/register"){
             $location.path('/login');
       }
   });

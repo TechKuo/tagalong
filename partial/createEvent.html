@@ -1,0 +1,95 @@
+
+<link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.css">
+<link rel="stylesheet" href="css/jquery.timepicker.css"/>
+<link rel="stylesheet" href="css/animations.css"/>
+<script type="text/javascript" src="js/jquery.datetimepicker.js"></script>
+<script type="text/javascript" src="js/jquery.timepicker.js"></script>
+
+<body ng-app="myApp" ng-controller="CreateEventController">
+	<!-- Jumbotron -->
+    <div class="jumbotron" style="padding: 15px;">
+        <h2 class="text-center">Create an Event</h2>
+    </div>
+
+	<div class="container">
+		<form class="form-signin" ng-submit="createEvent()">
+
+				<div class="form-group" >
+					<label for="restaurant_name">Restaurant Name </label>
+					<p id="restaurant_name" ng-model="restaurantName" class="form-control" name="restaurantName"> 
+						{{restaurants[restaurantId].Restaurant}}
+					</p>
+				</div>
+
+				<div class="form-group" >
+					<label for="restaurant_address">Restaurant Address </label>
+					<p id="restaurant_address" ng-model="restaurantAddress" class="form-control" name="restaurantAddress">
+						{{restaurants[restaurantId].Address}}
+					</p>
+				</div>
+
+				<div class="form-group">
+					<label for="eventDate">Select Event Date</label>
+					<span id="eventCalendar" class="glyphicon glyphicon-calendar" style="margin-left: 10px; cursor: pointer;"></span>
+					<input id="eventDate" ng-model="date" type="text" class="form-control" name="eventDate" style="width: 50%" required>
+						<script>
+							$(function() {
+								$('#eventCalendar').click(function() {
+									$("#eventDate").datetimepicker('show');
+								});
+								$("#eventDate").datetimepicker({timepicker:false,format:'m.d.Y'});
+							});
+						</script>
+				</div>
+
+
+				<div class="form-group">
+					<label for="startTime">Select Start Time</label>
+					<input id="startTime" ng-model="startTime" class="form-control" type="text" name="startTime" style="width: 50%" required>
+						<script>
+							$(function() {
+								$("#startTime").timepicker({interval:15,minHour:6, maxHour:20, timeFormat:"hh:mm p"});
+							});
+						</script>
+				</div>
+
+				<div class="form-group">
+					<label for="endTime">Select End Time</label>
+					<input id="endTime" ng-model="endTime" class="form-control" type="text" name="endTime" style="width: 50%" required>
+						<script>
+							$(function() {
+								$("#endTime").timepicker({interval:15,minHour:6, maxHour:20, timeFormat:"hh:mm p"});
+							});
+						</script>
+				</div>
+
+				 <div class="form-group">
+    				<label for="inviteList">Invite Friends </label>
+      				<input id="inviteList" class="form-control" type="text" name="inviteList">
+ 				 </div>
+
+ 				 <div class="form-group">
+    				<label for="eventType">Please Select Event Type</label>
+    					<select class="form-control" required>
+      					<option value="Public">Public</option>
+      					<option value="Private">Private</option>
+    					</select>
+  				</div>
+
+  				<div class="form-group">
+    				<label for="comments">Comments<p></p><Comments</label>
+    				<textarea class="form-control" name="comments"id="comments" cols="50" rows="3"></textarea>
+  				</div>
+
+  				<p></p>
+				<div>
+  					<center><button class="btn btn-primary btn-block btn-signin" type="submit">Create</button></center>
+				</div>
+		</form>
+    </div>
+</body>
+	
+    <script type="text/javascript" src="lib/angular/angular-aria.min.js"></script>
+    <script type="text/javascript" src="lib/angular/angular-messages.min.js"></script>
+    <script type="text/javascript" src="lib/angular/angular-animate.min.js"></script>
+   

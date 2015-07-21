@@ -42,6 +42,9 @@ angular.module('myApp')
             newUser.set("password", $scope.password);
             newUser.set("department", $scope.userDepartment);
             newUser.set("location", $scope.userLocation);
+            newUser.set("invited", []);
+            newUser.set("going", []);
+            newUser.set("hosting", []);
             
             newUser.save(null,{
                 success: function(result) {
@@ -52,9 +55,10 @@ angular.module('myApp')
                     // welcome the user
                     alert("Thank you! You are now ready to tagalong!")
 
-                    // set 'session' for user
-                    $rootScope.currentUser = $scope.username;
-                    $rootScope.loggedIn = true;
+                    // set session for logged in user
+                    localStorage.currentUser = $scope.username;
+                    localStorage.loggedIn = true;
+                    localStorage.userName = results[i].get("firstName") + " " + results[i].get("lastName");
 
                     // redirect to index
                     $location.path('/myEvents');

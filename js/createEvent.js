@@ -8,7 +8,7 @@ angular.module('myApp')
         $scope.date = "";
         $scope.startTime = "";
         $scope.endTime = "";
-        $scope.invited = [];
+        $scope.invited = "";
         $scope.hostName = "";
         $scope.isPublic = false;
         $scope.comments = "";

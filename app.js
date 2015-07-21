@@ -82,12 +82,10 @@ myApp.run(['$rootScope', '$location', function($rootScope, $location) {
   Parse.initialize("0jzPCnJyCDiuodshWSVBV9ZosBAFo0x5u4Ir7cAB", "9nxpPoT3YzKnENQC6BRn9k0nbXqlxMqF3BCOagFM");
 
   $rootScope.$on('$locationChangeStart', function(event, next, current) {
-      // if user is not logged in, redirect to login
-      if (!$rootScope.loggedIn){
-          // but make sure they are not trying to register first
-          if ($location.path() != "/register"){
+      // if user is not logged in and is trying to access a page besides the login or register page,
+      // redirect that user to the login page
+      if (!$rootScope.loggedIn && $location.path() != "/register"){
             $location.path('/login');
-          }
       }
   });
 

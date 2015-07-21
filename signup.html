@@ -1,116 +1,107 @@
-<html ng-app="ngMailChimp">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>AT&T Tagalong Registration Page</title>
-        <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="css/style_justin.css"/>
-        <link rel="stylesheet" href="css/animations.css"/>
-    </head>
-    <body ng-controller="SignUpController as ctrl">
-        <div class="signup-wrapper">
-            <div class="logo">
-                <img src="assets/images/logo.png" alt="Logo"/>
+<body ng-app="myApp" ng-controller="SignUpController">
+    
+     <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="item active">
+          <img class="img-responsive" img src="images/Food/pizza_fade.jpg" alt="First slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <!--<h2>AT&T Tagalong</h2>-->
+              <!-- <p>AT&T Tagalong lets you find the best restaurants in the area and co-workers to eat with.</p> -->
             </div>
-            <div class="alert alert-success message-animation" role="alert" ng-if="ctrl.showSubmittedPrompt">
-                Thank you! Your account has been created.
-            </div>
-            <form name="ctrl.signupForm" ng-submit="ctrl.signup()" method="post" novalidate>
-                
-                <div class="form-group" ng-class="{'has-error':ctrl.hasErrorClass('userName')}">
-                    <label for="userName">AT&T UID</label>
-                    <input id="userName" name="userName" class="form-control" type="text" maxlength="6" required
-                           ng-model="ctrl.newCustomer.userName" ng-model-options="{ updateOn : 'default blur' }"
-                           ng-focus="ctrl.toggleUsernamePrompt(true)" ng-blur="ctrl.toggleUsernamePrompt(false)"/>
-
-                    <div class="my-messages">
-                        <div class="prompt message-animation" ng-if="ctrl.showUsernamePrompt">
-                            Please enter your 6-digit AT&T UID.
-                        </div>
-                    </div>
-
-                    <div class="my-messages" ng-messages="ctrl.signupForm.userName.$error" ng-if="ctrl.showMessages('userName')">
-                        <div class="message-animation" ng-message="required">
-                            <strong>This field is required.</strong>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="form-group">
-                    <label for="firstName">First Name</label>
-                    <input id="firstName" name="firstName" class="form-control" type="text" required
-                    ng-model="ctrl.newCustomer.firstName" ng-focus="ctrl.toggleFirstNamePrompt(true)" ng-blur="ctrl.toggleFirstNamePrompt(false)">
-                    <div class="my-messages" ng-messages="ctrl.signupForm.firstName.$error" ng-if="ctrl.showMessages('firstName')">
-                        <div class="message-animation" ng-message="required">
-                            <strong>This field is required.</strong>
-                        </div>
-                    </div>
-                </div>
-              
-                <div class="form-group">
-                    <label for="lastName">Last Name</label>
-                    <input id="lastName" name="lastName" class="form-control" type="text" required
-                    ng-model="ctrl.newCustomer.lastName" ng-focus="ctrl.toggleLastNamePrompt(true)" ng-blur="ctrl.toggleLastNamePrompt(false)">
-
-                    <div class="my-messages" ng-messages="ctrl.signupForm.lastName.$error" ng-if="ctrl.showMessages('lastName')">
-                        <div class="message-animation" ng-message="required">
-                            <strong>This field is required.</strong>
-                        </div>
-                    </div>
-                </div>
-
-
-                    <div class="form-group">
-                    <label for="password">Password</label>
-
-                    <div class="input-group" ng-class="{'has-error':ctrl.hasErrorClass('password')}">
-                        <input id="password" name="password" class="form-control" required
-                               type="{{ctrl.getPasswordType()}}"
-                               ng-model-options="{ updateOn : 'default blur' }"
-                               ng-model="ctrl.newCustomer.password" />
-                        <span class="input-group-addon">
-                            <input type="checkbox" ng-model="ctrl.signupForm.showPassword"> Show
-                        </span>
-                    </div>
-
-                    <div class="my-messages" ng-messages="ctrl.signupForm.password.$error" ng-if="ctrl.showMessages('password')">
-                        <div class="message-animation" ng-message="required">
-                            <strong>This field is required.</strong>
-                        </div>
-                    </div>
-
-                   
-                </div>
-
-                 <div class="dropDown">
-                    <label for="department">Please Select Your Department.</label>
-                    <select id= "departmentId" name="departmentId" required>
-                        <option value=""></option>
-                        <option ng-repeat="dep in ctrl.departments" value="{{dep.departmentID}}">{{dep.departmentName}}</option>
-                    </select>
-                </div>
-
-                <div class="dropDown">
-                    <label for="location">Please Select Your Location</label>
-                    <select id="locationId" name="locationId" required>
-                        <option value=""></option>
-                        <option ng-repeat="loc in ctrl.locations" value="{{loc.locationID}}">{{loc.locationName}}</option>
-                     </select>
-                </div>
-                <p></p>
-				
-                <center><button class="button" id="sign-up" type="submit">Create Account!</button></center>
-            </form>
+          </div>
         </div>
+        <div class="item ">
+          <img class="img-responsive" img src="images/Food/salad_fade.jpg" alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h3>Find the best restaurants</h3>
+              <!-- <p>AT&T Tagalong lets you find the best restaurants in the area and co-workers to eat with.</p> -->
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="img-responsive" img src="images/Food/bruschetta.jpg" alt="Third slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h4>Find co-workers to eat with</h4>
+              <!-- <p>AT&T Tagalong lets you find the best restaurants in the area and co-workers to eat with.</p> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <!--<span class="sr-only">Previous</span>-->
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <!-- <span class="sr-only">Next</span>-->
+      </a>
+    </div><!-- /.carousel -->
 
-        <script type="text/javascript" src="lib/angular/angular.min.js"></script>
-        <script type="text/javascript" src="lib/angular/angular-aria.min.js"></script>
-        <script type="text/javascript" src="lib/angular/angular-messages.min.js"></script>
-        <script type="text/javascript" src="lib/angular/angular-animate.min.js"></script>
-        <script type="text/javascript" src="js/signup.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    	
-    </body>
-</html>
+     <!-- Jumbotron -->
+    <div class="jumbotron" style="padding: 15px;">
+        <h2 class="text-center">Register</h2>
+    </div>
+
+    <div class="container">
+        <form class="form-signin" ng-submit="signup()">
+            
+            <div class="form-group">
+                <label for="username">AT&T UID</label>
+                <input id="username" name="username" class="form-control" type="text" maxlength="6" required
+                       ng-model="username" ng-model-options="{ updateOn : 'default blur' }">
+            </div>
+
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input id="firstName" name="firstName" class="form-control" type="text" required
+                ng-model="firstName">
+            </div>
+          
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input id="lastName" name="lastName" class="form-control" type="text" required
+                ng-model="lastName">
+            </div>
+
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" type="password" name="password" class="form-control" required
+                ng-model="password">
+            </div>
+
+             <div class="dropDown">
+                <label for="department">Please Select Your Department.</label>
+                <select ng-model="userDepartment" class="form-control" id= "departmentId" name="departmentId" required>
+                    <option value=""></option>
+                    <option ng-repeat="dep in departments" value="{{dep.attributes.name}}">{{dep.attributes.name}}</option>
+                </select>
+            </div>
+
+            <div class="dropDown">
+                <label for="location">Please Select Your Location</label>
+                <select ng-model="userLocation" class="form-control" id="locationId" name="locationId" required>
+                    <option value=""></option>
+                    <option ng-repeat="loc in locations" value="{{loc.attributes.city}}">{{loc.attributes.city}}</option>
+                 </select>
+            </div>
+            <p></p>
+			
+            <center><button class="btn btn-primary btn-block btn-signin" id="sign-up" type="submit">Create Account!</button></center>
+        </form>
+    </div>
+
+    <link rel="stylesheet" href="css/animations.css"/>
+    <script type="text/javascript" src="lib/angular/angular-aria.min.js"></script>
+    <script type="text/javascript" src="lib/angular/angular-messages.min.js"></script>
+    <script type="text/javascript" src="lib/angular/angular-animate.min.js"></script>
+</body>

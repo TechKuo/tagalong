@@ -420,6 +420,11 @@ $scope.browseEvents =
 
 $scope.browseEventsOrder = 'Day';
 
+$scope.onMyClick = function(){
+  $(".tooltipped").tooltip({delay:50});
+};
+
+
 
 });
 

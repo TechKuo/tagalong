@@ -1,87 +1,69 @@
-angular.module('ngMailChimp', ['ngAria', 'ngMessages', 'ngAnimate'])
-    .controller('SignUpController',  ['$http', function ($http) {
-        var ctrl = this,
-            newCustomer = { email:'', userName:'', password:'' };
+angular.module('myApp')
+    .controller('SignUpController',  ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
 
-        var signup = function () {
-            if( ctrl.signupForm.$valid) {
-                ctrl.showSubmittedPrompt = true;
-                clearForm();
+        // populate dropdowns with data from Parse
+        var DepartmentClass = Parse.Object.extend("Departments");
+        var query = new Parse.Query(DepartmentClass);
+        
+        query.find( {
+            success: function(results) {
+                $scope.departments = results;
+            }, error: function(results) {
+                alert("Error with Retrieving Departments")
             }
-        };
-
-        var clearForm = function () {
-            ctrl.newCustomer = { email:'', userName:'', password:'' }
-            ctrl.signupForm.$setUntouched();
-            ctrl.signupForm.$setPristine();
-        };
-
-        var getPasswordType = function () {
-            return ctrl.signupForm.showPassword ? 'text' : 'password';
-        };
-
-        var toggleEmailPrompt = function (value) {
-            ctrl.showEmailPrompt = value;
-        };
-
-        var toggleUsernamePrompt = function (value) {
-            ctrl.showUsernamePrompt = value;
-        };
-
-        var hasErrorClass = function (field) {
-            return ctrl.signupForm[field].$touched && ctrl.signupForm[field].$invalid;
-        };
-
-        var showMessages = function (field) {
-            return ctrl.signupForm[field].$touched || ctrl.signupForm.$submitted
-        };
-
-        // populate dropdowns from back end
-        ctrl.departments = [];
-        ctrl.locations = [];
-        $http.get('http://localhost:4567/departments').then(function(result){
-            ctrl.departments = result.data;
-        });
-        $http.get('http://localhost:4567/locations').then(function(result){
-            ctrl.locations = result.data;
         });
 
-        ctrl.showEmailPrompt = false;
-        ctrl.showUsernamePrompt = false;
-        ctrl.showSubmittedPrompt = false;
-        ctrl.toggleEmailPrompt = toggleEmailPrompt;
-        ctrl.toggleUsernamePrompt = toggleUsernamePrompt;
-        ctrl.getPasswordType = getPasswordType;
-        ctrl.hasErrorClass = hasErrorClass;
-        ctrl.showMessages = showMessages;
-        ctrl.newCustomer = newCustomer;
-        ctrl.signup = signup;
-        ctrl.clearForm = clearForm;
-    }])
-    .directive('validatePasswordCharacters', function () {
-        return {
-            require: 'ngModel',
-            link: function ($scope, element, attrs, ngModel) {
-                ngModel.$validators.lowerCase = function (value) {
-                    var pattern = /[a-z]+/;
-                    return (typeof value !== 'undefined') && pattern.test(value);
-                };
-                ngModel.$validators.upperCase = function (value) {
-                    var pattern = /[A-Z]+/;
-                    return (typeof value !== 'undefined') && pattern.test(value);
-                };
-                ngModel.$validators.number = function (value) {
-                    var pattern = /\d+/;
-                    return (typeof value !== 'undefined') && pattern.test(value);
-                };
-                ngModel.$validators.specialCharacter = function (value) {
-                    var pattern = /\W+/;
-                    return (typeof value !== 'undefined') && pattern.test(value);
-                };
-                ngModel.$validators.eightCharacters = function (value) {
-                    return (typeof value !== 'undefined') && value.length >= 8;
-                };
+        var LocationClass = Parse.Object.extend("Locations");
+        var query = new Parse.Query(LocationClass);
+        
+        query.find( {
+            success: function(results) {
+                $scope.locations = results;
+            }, error: function(results) {
+                alert("Error with Retrieving Locations")
             }
-        }
-    })
-;
+        });
+
+
+        $scope.username = "";
+        $scope.firstName = "";
+        $scope.lastName = "";
+        $scope.password = "";
+        $scope.userDepartment = "";
+        $scope.userLocation = "";
+
+        $scope.signup = function(){
+            var UserClass = Parse.Object.extend("Users");
+            var newUser = new UserClass();
+
+            newUser.set("username", $scope.username);
+            newUser.set("firstName", $scope.firstName);
+            newUser.set("lastName", $scope.lastName);
+            newUser.set("password", $scope.password);
+            newUser.set("department", $scope.userDepartment);
+            newUser.set("location", $scope.userLocation);
+            
+            newUser.save(null,{
+                success: function(result) {
+                    // save user into Parse
+                    newUser.set("objectId", result.id);
+                    newUser.save();
+
+                    // welcome the user
+                    alert("Thank you! You are now ready to tagalong!")
+
+                    // set 'session' for user
+                    $rootScope.currentUser = $scope.username;
+                    $rootScope.loggedIn = true;
+
+                    // redirect to index
+                    $location.path('/myEvents');
+                    if(!$scope.$$phase) $scope.$apply();
+                }, error: function(result) {
+                    alert("Error registering user!");
+                }
+            });
+        };
+
+
+    }]);

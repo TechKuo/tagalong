@@ -3,28 +3,14 @@
 	<h1>My Events</h1>
 	<label>search: </label>
 	<input ng-model="query" placeholder="Search my events" autofocus>
-
-<!-- 	<label class="formgroup">by:
-	<select ng-model="eventOrder">
-		<option value="Date">Upcoming</option>
-		Come back to this one, change reknown to department
-		<option value="Restaurant">Restaurant</option>
-	</select>
-	</label> -->
-<!-- 
-	<label class="formgroup">
-		<input type="radio" ng-model="direction" name="direction" checked> 
-		ascending
-	</label>
-	<label class="formgroup">
-		<input type="radio" ng-model="direction" name="direction" value="reverse">
-		descending
-	</label> -->
 </div>
 
 
 <!-- List of restaurants -->
 <div class="container">
+<a class="tooltipped btn btn-lg btn-primary" data-toggle="tooltip" data-tooltip="this is a test" title="Hope this works" data-position="right">
+test
+</a>
 	<ul class="list-group">
 
 		<li class="list-group-item" ng-repeat="item in events | filter: query | orderBy : eventOrder ">
@@ -33,13 +19,31 @@
 			   <a ng-href="{{item.Website}}">
 				  <h2>{{item.Restaurant}}</h2>
 				</a>
-				  <h3>{{item.Date}}{{item.Day}}</h3>
-				  <h3>{{item.Time}}</h3>
+				<h3>{{item.Date}}{{item.Day}}</h3>
+				<h3>{{item.Time}}</h3>
 				  <!-- Add popover to show names of people going -->
-				  <h3>Attending: {{item.Going}}</h3>
-				  <h3>Invited: {{item.Invited}}</h3>
-				  <h3>Status: {{item.Status}}</h3>
-            </a>
+				<h3>Attending: {{item.Going}}</h3>
+				</a>
+				 	<!-- Supposed to be popover for people who are invited -->
+				<a class="a-right tooltipped" data-toggle="tooltip" data-tooltip="{{item.People}}" title="{{item.People}}" data-position="right" ng-click="onMyClick()">
+  					<h3 style="max-width=auto">Invited: {{item.Invited}}</h3>
+				</a>
+				  
+				<h3>Status: {{item.Status}}</h3>
+            
 		</li>
+
 	</ul>
+
 </div>
+
+	<script> 
+
+	        $(document).ready(function(){
+	        	$(".tooltipped").tooltip({delay:50});
+	        });
+
+	      
+
+    </script>
+

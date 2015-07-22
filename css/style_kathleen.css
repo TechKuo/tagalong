@@ -126,6 +126,16 @@ h4 {
   color: #0c2577;
 }
 
+/*Keeling Class h5 */
+h5{
+  font-size: 1.2rem;
+  margin-top: 4px;
+  color: #0c2577;
+  line-height: 100%;
+  margin-bottom: 4px;
+}
+
+
 p {
   line-height: 1.3rem;
   color: #475B62;
@@ -425,6 +435,61 @@ img {
 
 }
 
+.button2{
+  white-space:normal !important;
+  word-wrap:break-word;
+  width: 180px;
+  font-size: 18;
+  display:block;
+  margin: 10px;
+  text-align:center;
+  vertical-align: center;
+  background: #81017e;
+  padding-top: 15px;
+}
+
+.button3{
+  white-space:normal !important;
+  word-wrap:break-word;
+  width: 230px;
+  height: 50px;
+  display: inline;
+  padding: 3px 6px;
+  margin: 20px;
+  font-size: 24px;
+  line-height: 140%;
+  text-align: center;
+  text-decoration: none;
+  margin-left:auto;
+  margin-right: auto;
+
+  /*white-space: nowrap;*/
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: #81017e; 
+  color: #FCF4DC;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+       -o-user-select: none;
+          user-select: none;
+}
+
+.padSmall{
+  padding-top: 40px;
+  padding-bottom: 14px;
+}
+
+.spacing{
+  height:20px;
+}
+
+.spacingSmall{
+  height:6px;
+}
+
 .pad{
   padding-left:10px;
   padding-right:10px;
@@ -458,3 +523,40 @@ img {
   padding-top: 10px;
 }
 
+.centered{ 
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  vertical-align: middle;
+}
+
+.websiteFormatting, .websiteFormatting a{
+   font-size: 1.4rem;
+  margin-top: 0;
+  color: #0c2577;
+  line-height: 110%;
+  margin-bottom: 5px;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.backSearchSize, .backSearchSize a{
+  font-size: 1.1rem;
+  margin-top: 0;
+  color: #0c2577;
+  line-height: 90%;
+  margin-bottom: 5px;
+  text-align:left;
+  font-weight: 500;
+}
+
+#myModal {
+padding-right: 0px !important;
+}
+
+.restDetailImage{
+  display:inline-block;
+  padding-bottom:5px;
+  padding-right:10px;
+  vertical-align: middle;
+}

@@ -36,9 +36,10 @@ angular.module('myApp')
             var UserClass = Parse.Object.extend("Users");
             var newUser = new UserClass();
 
+            var fullName = $scope.firstName + " " + $scope.lastName;
+
             newUser.set("username", $scope.username);
-            newUser.set("firstName", $scope.firstName);
-            newUser.set("lastName", $scope.lastName);
+            newUser.set("name", fullName);
             newUser.set("password", $scope.password);
             newUser.set("department", $scope.userDepartment);
             newUser.set("location", $scope.userLocation);
@@ -58,7 +59,7 @@ angular.module('myApp')
                     // set session for logged in user
                     localStorage.currentUser = $scope.username;
                     localStorage.loggedIn = true;
-                    localStorage.userName = results[i].get("firstName") + " " + results[i].get("lastName");
+                    localStorage.userName = fullName;
 
                     // redirect to index
                     $location.path('/myEvents');

@@ -1,9 +1,6 @@
 
-<link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.css">
-<link rel="stylesheet" href="css/jquery.timepicker.css"/>
+
 <link rel="stylesheet" href="css/animations.css"/>
-<script type="text/javascript" src="js/jquery.datetimepicker.js"></script>
-<script type="text/javascript" src="js/jquery.timepicker.js"></script>
 
 <body ng-app="myApp" ng-controller="CreateEventController">
 	<!-- Jumbotron -->
@@ -63,23 +60,72 @@
 						</script>
 				</div>
 
-				 <div class="form-group">
-    				<label for="inviteList">Invite Friends </label>
-    				<input id="searchFriends" class="form-control" type="text" Name="searchFriends">
-      				<input id="inviteList" class="form-control" type="text" name="inviteList">
- 				 </div>
+				<div class="form-group">
+				<label for="invited">Invited </label>
+					<p id="invited" ng-model="invited" class="form-control" name="invited">{{invited}}</p>
+				</div>	
+
+				<!-- Trigger the modal with a button -->
+				<button type="button" class="btn btn-primary btn-block btn-signin" 
+				data-toggle="modal" data-target="#myModal" style="margin-left: 0">Invite</button>
+
+				<!-- Modal -->
+				<div id="myModal" class="modal fade" role="dialog">
+
+				    <!-- Modal content-->
+				    <div class="modal-content">
+				      	<!-- Top search bar -->
+						<div class="search">
+							<button type="button" class="close" data-dismiss="modal" style="color: #EEE8D5; font-size: 3rem">&times;</button>
+							<h1>Employee Search</h1>
+							<label>search: </label>
+							<input ng-model="query" placeholder="Search for employees" autofocus>
+							<label class="formgroup">by:
+							<select ng-model="employeeOrder">
+								<option value="name">Name</option>
+								<option value="department">Department</option>
+								<option value="username">ATTUID</option>
+							</select>
+							</label>
+						</div>
+	
+	
+						<!-- List of people -->
+						<ul class="list-group" ng-show="query">
+						<!--Should take them to individual details page  -->
+							<li class="list-group-item" ng-repeat="employee in users | filter: query | orderBy : employeeOrder:direction ">
+		                      <!-- The below is | is a filter and makes the data appear as a filter -->
+		                      <h2>{{employee.name}}</h2>
+		                      <h3>{{employee.attuid}}</h2>
+		                      <h3>{{employee.department}}</h3>
+		                      <button ng-click="addPerson(employee)" type="button" 
+		                      	class="btn btn-primary btn-block btn-signin" data-dismiss="modal">
+					   		 	<!-- Keep space between word and icon -->
+		                    	<span class="glyphicon glyphicon-send" aria-hidden="true"></span>  Invite
+		               		 </button>
+							</li>    
+						</ul>
+
+
+						<div class="modal-footer">
+				        	<button type="button" class="btn btn-primary btn-block btn-signin" data-dismiss="modal" style="margin-right: 25px;">
+				        		Close
+				        	</button>
+				      	</div>
+				  	</div>
+				</div>
 
  				 <div class="form-group">
     				<label for="eventType">Please Select Event Type</label>
-    					<select class="form-control" required>
-      					<option value="Public">Public</option>
-      					<option value="Private">Private</option>
+    					<select ng-model="isPublic" class="form-control" required>
+	      					<option value="Public">Public</option>
+	      					<option value="Private">Private</option>
     					</select>
   				</div>
 
   				<div class="form-group">
     				<label for="comments">Comments<p></p><Comments</label>
-    				<textarea class="form-control" name="comments"id="comments" cols="50" rows="3"></textarea>
+    				<textarea ng-model="comments" class="form-control" name="comments"id="comments" cols="50" rows="3"></textarea>
   				</div>
 
   				<p></p>
@@ -93,4 +139,5 @@
     <script type="text/javascript" src="lib/angular/angular-aria.min.js"></script>
     <script type="text/javascript" src="lib/angular/angular-messages.min.js"></script>
     <script type="text/javascript" src="lib/angular/angular-animate.min.js"></script>
+    
    

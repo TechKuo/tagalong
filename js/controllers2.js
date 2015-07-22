@@ -86,6 +86,28 @@ myApp.controller('MyController', function($scope, $state) {
   }
 ];
 
+// retrieve users from Parse
+
+var UserClass = Parse.Object.extend("Users");
+var query = new Parse.Query(UserClass);
+
+query.find( {
+    success: function(results) {
+        $scope.users = [];
+        for (var i=0; i < results.length; i++) {
+            var resultsUser = {
+                name : results[i].get("name"),
+                attuid : results[i].get("username"),
+                location : results[i].get("location"),
+                department: results[i].get("department")
+            }
+            $scope.users.push(resultsUser);
+        }
+    }, error: function(results) {
+        alert("Error with Retrieving Users")
+    }
+});
+
 // shows order in which employees will appear
 $scope.employeeOrder = 'name';
   

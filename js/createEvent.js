@@ -35,7 +35,6 @@ angular.module('myApp')
             newEvent.set("hostName", localStorage.userName);
             newEvent.set("public", $scope.isPublic === "Public" ? true : false);
             newEvent.set("comments", $scope.comments);
-
             
             newEvent.save(null,{
                 success: function(result) {

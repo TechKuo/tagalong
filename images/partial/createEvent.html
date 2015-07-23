@@ -1,0 +1,219 @@
+
+
+<link rel="stylesheet" href="css/animations.css"/>
+
+<body ng-app="myApp" ng-controller="CreateEventController">
+	<!-- Jumbotron -->
+    <div class="jumbotron" style="padding: 15px;">
+        <h2 class="text-center">Create an Event</h2>
+    </div>
+
+	<div class="container">
+		<form class="form-signin" ng-submit="createEvent()">
+
+				<div class="form-group" >
+					<label for="restaurant_name">Restaurant Name </label>
+					<p id="restaurant_name" ng-model="restaurantName" class="form-control" name="restaurantName"> 
+						{{restaurants[restaurantId].Restaurant}}
+					</p>
+				</div>
+
+				<div class="form-group" >
+					<label for="restaurant_address">Restaurant Address </label>
+					<p id="restaurant_address" ng-model="restaurantAddress" class="form-control" name="restaurantAddress">
+						{{restaurants[restaurantId].Address}}
+					</p>
+				</div>
+
+				<div class="form-group">
+					<label for="eventDate">Select Event Date</label>
+					<span id="eventCalendar" class="glyphicon glyphicon-calendar" style="margin-left: 10px; cursor: pointer;"></span>
+					<input id="eventDate" ng-change="" ng-model="date" type="text" class="form-control" name="eventDate" style="width: 50%" required>
+						<script>
+							$(function() {
+								$('#eventCalendar').click(function() {
+									$("#eventDate").datetimepicker('show');
+								});
+								$("#eventDate").datetimepicker({timepicker:false,format:'m.d.Y'});
+							});
+						</script>
+				</div>
+
+
+				<div class="form-group">
+					<label for="startTime">Select Start Time</label>
+					<select ng-model="startTime" class="form-control" required>
+                <option value="7:00 AM">7:00 AM</option>
+                <option value="7:15 AM">7:15 AM</option>
+                <option value="7:30 AM">7:30 AM</option>
+                <option value="7:45 AM">7:45 AM</option>
+      					<option value="8:00 AM">8:00 AM</option>
+      					<option value="8:15 AM">8:15 AM</option>
+      					<option value="8:30 AM">8:30 AM</option>
+      					<option value="8:45 AM">8:45 AM</option>
+      					<option value="9:00 AM">9:00 AM</option>
+      					<option value="9:15 AM">9:15 AM</option>
+      					<option value="9:30 AM">9:30 AM</option>
+      					<option value="9:45 AM">9:45 AM</option>
+      					<option value="10:00 AM">10:00 AM</option>
+      					<option value="10:15 AM">10:15 AM</option>
+      					<option value="10:30 AM">10:30 AM</option>
+      					<option value="10:45 AM">10:45 AM</option>
+      					<option value="11:00 AM">11:00 AM</option>
+      					<option value="11:15 AM">11:15 AM</option>
+      					<option value="11:30 AM">11:30 AM</option>
+      					<option value="11:45 AM">11:45 AM</option>
+      					<option value="12:00 PM">12:00 PM</option>
+      					<option value="12:15 PM">12:15 PM</option>
+      					<option value="12:30 PM">12:30 PM</option>
+      					<option value="12:45 PM">12:45 PM</option>
+      					<option value="1:00 PM">1:00 PM</option>
+      					<option value="1:15 PM">1:15 PM</option>
+      					<option value="1:30 PM">1:30 PM</option>
+      					<option value="1:45 PM">1:45 PM</option>
+      					<option value="2:00 PM">2:00 PM</option>
+      					<option value="2:15 PM">2:15 PM</option>
+      					<option value="2:30 PM">2:30 PM</option>
+      					<option value="2:45 PM">2:45 PM</option>
+      					<option value="3:00 PM">3:00 PM</option>
+      					<option value="3:15 PM">3:15 PM</option>
+      					<option value="3:30 PM">3:30 PM</option>
+      					<option value="3:45 PM">3:45 PM</option>
+      					<option value="4:00 PM">4:00 PM</option>
+      					<option value="4:15 PM">4:15 PM</option>
+      					<option value="4:30 PM">4:30 PM</option>
+      					<option value="4:45 PM">4:45 PM</option>
+      					<option value="5:00 PM">5:00 PM</option>
+                <option value="5:15 PM">5:15 PM</option>
+                <option value="5:30 PM">5:30 PM</option>
+                <option value="5:45 PM">5:45 PM</option>
+                <option value="6:00 PM">6:00 PM</option>
+    				</select>
+				</div>
+
+				<div class="form-group">
+					<label for="endTime">Select End Time</label>
+					<select ng-model="endTime" class="form-control" required>
+      					 <option value="7:00 AM">7:00 AM</option>
+                <option value="7:15 AM">7:15 AM</option>
+                <option value="7:30 AM">7:30 AM</option>
+                <option value="7:45 AM">7:45 AM</option>
+                <option value="8:00 AM">8:00 AM</option>
+                <option value="8:15 AM">8:15 AM</option>
+                <option value="8:30 AM">8:30 AM</option>
+                <option value="8:45 AM">8:45 AM</option>
+                <option value="9:00 AM">9:00 AM</option>
+                <option value="9:15 AM">9:15 AM</option>
+                <option value="9:30 AM">9:30 AM</option>
+                <option value="9:45 AM">9:45 AM</option>
+                <option value="10:00 AM">10:00 AM</option>
+                <option value="10:15 AM">10:15 AM</option>
+                <option value="10:30 AM">10:30 AM</option>
+                <option value="10:45 AM">10:45 AM</option>
+                <option value="11:00 AM">11:00 AM</option>
+                <option value="11:15 AM">11:15 AM</option>
+                <option value="11:30 AM">11:30 AM</option>
+                <option value="11:45 AM">11:45 AM</option>
+                <option value="12:00 PM">12:00 PM</option>
+                <option value="12:15 PM">12:15 PM</option>
+                <option value="12:30 PM">12:30 PM</option>
+                <option value="12:45 PM">12:45 PM</option>
+                <option value="1:00 PM">1:00 PM</option>
+                <option value="1:15 PM">1:15 PM</option>
+                <option value="1:30 PM">1:30 PM</option>
+                <option value="1:45 PM">1:45 PM</option>
+                <option value="2:00 PM">2:00 PM</option>
+                <option value="2:15 PM">2:15 PM</option>
+                <option value="2:30 PM">2:30 PM</option>
+                <option value="2:45 PM">2:45 PM</option>
+                <option value="3:00 PM">3:00 PM</option>
+                <option value="3:15 PM">3:15 PM</option>
+                <option value="3:30 PM">3:30 PM</option>
+                <option value="3:45 PM">3:45 PM</option>
+                <option value="4:00 PM">4:00 PM</option>
+                <option value="4:15 PM">4:15 PM</option>
+                <option value="4:30 PM">4:30 PM</option>
+                <option value="4:45 PM">4:45 PM</option>
+                <option value="5:00 PM">5:00 PM</option>
+                <option value="5:15 PM">5:15 PM</option>
+                <option value="5:30 PM">5:30 PM</option>
+                <option value="5:45 PM">5:45 PM</option>
+                <option value="6:00 PM">6:00 PM</option>
+    				</select>
+				</div>
+
+				<div class="form-group">
+				<label for="invited">Invited </label>
+					<p id="invited" ng-model="invited" class="form-control" name="invited">{{invited}}</p>
+				</div>	
+
+				<!-- Trigger the modal with a button -->
+				<button type="button" class="btn btn-primary btn-block btn-signin" 
+				data-toggle="modal" data-target="#myModal" style="margin-left: 0">Invite</button>
+
+				<button type="button" class="btn btn-primary btn-block btn-signin" 
+				ng-click="backspace()" style="margin-top: 20px">Backspace</button>
+
+				<!-- Modal -->
+				<div id="myModal" class="modal fade" role="dialog">
+
+				    <!-- Modal content-->
+				    <div class="modal-content">
+				      	<!-- Top search bar -->
+						<div class="search">
+							<button type="button" class="close" data-dismiss="modal" style="color: #EEE8D5; font-size: 3rem">&times;</button>
+							<h1 style="font-size: 2rem">Employee Search</h1>
+							<label>search: </label>
+							<input ng-model="query" placeholder="Search for employees" autofocus>
+						</div>
+	
+	
+						<!-- List of people -->
+						<ul class="list-group" ng-show="query">
+						<!--Should take them to individual details page  -->
+							<li class="list-group-item" ng-repeat="employee in users | filter: query | orderBy : employeeOrder:direction ">
+		                      <!-- The below is | is a filter and makes the data appear as a filter -->
+		                      <h2>{{employee.name}}</h2>
+		                      <h3>{{employee.attuid}}</h2>
+		                      <h3>{{employee.department}}</h3>
+		                      <button ng-click="addPerson(employee)" type="button" 
+		                      	class="btn btn-primary btn-block btn-signin" data-dismiss="modal">
+					   		 	<!-- Keep space between word and icon -->
+		                    	<span class="glyphicon glyphicon-send" aria-hidden="true"></span>  Invite
+		               		 </button>
+							</li>    
+						</ul>
+
+
+						<div class="modal-footer">
+				        	<button type="button" class="btn btn-primary btn-block btn-signin" data-dismiss="modal" style="margin-right: 25px;"> Close </button>
+				      	</div>
+				  	</div>
+				</div>
+
+ 				 <div class="form-group">
+    				<label for="eventType">Please Select Event Type</label>
+    					<select ng-model="isPublic" class="form-control" required>
+	      					<option value="Public">Public</option>
+	      					<option value="Private">Private</option>
+    					</select>
+  				</div>
+
+  				<div class="form-group">
+    				<label for="comments">Comments<p></p><Comments</label>
+    				<textarea ng-model="comments" class="form-control" name="comments"id="comments" cols="50" rows="3"></textarea>
+  				</div>
+
+  				<p></p>
+				<div>
+  					<center><button class="btn btn-primary btn-block btn-signin" type="submit">Create</button></center>
+				</div>
+		</form>
+    </div>
+</body>
+	
+    <script type="text/javascript" src="lib/angular/angular-aria.min.js"></script>
+    <script type="text/javascript" src="lib/angular/angular-messages.min.js"></script>
+    <script type="text/javascript" src="lib/angular/angular-animate.min.js"></script>
+    
+   

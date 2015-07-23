@@ -77,8 +77,6 @@ myApp.config( function($stateProvider, $urlRouterProvider) {
 
 myApp.run(['$rootScope', '$location', function($rootScope, $location) {
 
-  $rootScope.loggedIn = localStorage.loggedIn;
-
   $rootScope.logout = function() {
     delete localStorage.loggedIn;
     delete localStorage.currentUser;

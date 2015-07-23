@@ -23,7 +23,7 @@ angular.module('myApp')
                                     // set session for logged in user
                                     localStorage.currentUser = $scope.username;
                                     localStorage.loggedIn = true;
-                                    localStorage.userName = results[i].get("firstName") + " " + results[i].get("lastName");
+                                    localStorage.userName = results[i].get("name");
                                     
                                     // redirect to my events
                                     $location.path('/myEvents');

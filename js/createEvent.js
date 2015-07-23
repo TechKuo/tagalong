@@ -11,17 +11,37 @@ angular.module('myApp')
         $scope.invited = "";
         $scope.invitedArray = [];
         $scope.hostName = "";
-        $scope.isPublic = false;
+        $scope.isPublic = "";
         $scope.comments = "";
 
-         
-
+        // function for adding people to the invited list
         $scope.addPerson = function(employee){
-            $scope.invited += employee.name + ", ";
+            if ($scope.invited == ""){
+                $scope.invited += employee.name
+            }
+            else {
+                $scope.invited += ", " + employee.name;
+            }
             $scope.invitedArray.push(employee.attuid);
         };
 
+        // function for deleting the last person added to the invited list
+        $scope.backspace = function(){
+            var lastCommaIndex = $scope.invited.lastIndexOf(", ");
+            if (lastCommaIndex === -1){
+                $scope.invited = "";
+                $scope.invitedArray = [];
+            }
+            else {
+                $scope.invited = $scope.invited.substring(0, lastCommaIndex);
+                $scope.invitedArray.pop();
+            }
+        }
+
         $scope.createEvent = function(){
+
+            var newEventId = "";
+
             var EventClass = Parse.Object.extend("Events");
             var newEvent = new EventClass();
 
@@ -31,28 +51,65 @@ angular.module('myApp')
             newEvent.set("startTime", $scope.startTime);
             newEvent.set("endTime", $scope.endTime);
             newEvent.set("going", []);
+            newEvent.set("goingList", "");
             newEvent.set("invited", $scope.invitedArray);
+            newEvent.set("invitedList", $scope.invited);
             newEvent.set("hostName", localStorage.userName);
-            newEvent.set("public", $scope.isPublic === "Public" ? true : false);
+            newEvent.set("public", $scope.isPublic === "Private"  ? false : true);
             newEvent.set("comments", $scope.comments);
             
             newEvent.save(null,{
                 success: function(result) {
-                    // save user into Parse
+                    // save new event id
+                    newEventId = result.id;
+
+                    // save event into Parse
                     newEvent.set("objectId", result.id);
                     newEvent.save();
 
-                    // welcome the user
-                    alert("Thanks, your event has been created!")
+                    //  prompt the user
+                    alert("Thanks! Your event has been created!")
 
-                    // redirect to index
+                    // redirect to myEvents
                     $location.path('/myEvents');
                     if(!$scope.$$phase) $scope.$apply();
                 }, error: function(result) {
-                    alert("Error creating event!");
+                    alert("Error creating event.");
                 }
             });
+
+            // update the invited list for every invited person
+            var UserClass = Parse.Object.extend("Users");
+            var invited_query = new Parse.Query(UserClass);
+
+            for (var i = 0; i < $scope.invitedArray.length; i++){
+                invited_query.equalTo("username", $scope.invitedArray[i]);
+                invited_query.first( {
+                    success: function(object) {
+                        var newInvitedList = object.get("invited");
+                        newInvitedList.push(newEventId);
+                        object.set("invited", newInvitedList);
+                        object.save();
+                    }, error: function(object) {
+                        alert("Error with adding event to invited users.")
+                    }
+                });
+            };
+
+            // update the hosting list for the host
+            var hosting_query = new Parse.Query(UserClass);
+            hosting_query.equalTo("username", localStorage.currentUser);
+            hosting_query.first( {
+                success: function(object) {
+                    var newHostingList = object.get("hosting");
+                    newHostingList.push(newEventId);
+                    object.set("hosting", newHostingList);
+                    object.save();
+                }, error: function(object) {
+                    alert("Error with adding event to host.")
+                }
+            });
+
+
         };
-
-
     }]);

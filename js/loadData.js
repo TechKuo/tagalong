@@ -1,123 +1,6 @@
 myApp.controller('MyController', function($scope, $state) {
 
-
-	
-  $scope.employees = 
-[
-  {
-    "name":"Kathleen Morgan",
-    "shortname":"Kathleen_Morgan",
-    "department":"TDP",
-    "attID":"km234r",
-    "itemId":"0"
-    // "bio":"Kathleen attends the University of Texas in Austin. ",
-  },
-  {
-    "name":"Justin Keeling",
-    "shortname":"Justin_Keeling",
-    "department":"TDP",
-    "attID":"jk6510",
-    "itemId":"1"
-    // "bio":"Justin attends the University of Texas in Dallas. ",
-  },
-  {
-    "name":"Tech Kuo",
-    "shortname":"Tech_Kuo",
-    "department":"TDP",
-    "attID":"tk685f",
-    "itemId":"2"
-    // "bio":"Tech attends Cornell University.",
-  },
-  {
-    "name":"Claire Weldon",
-    "shortname":"Claire_Weldon",
-    "department":"TDP",
-    "attID":"cw741q",
-    "itemId":"3"
-    // "bio":"Claire Weldon attends Texas A&M University.",
-  },
-  {
-    "name":"Rukshinie Fernando",
-    "shortname":"Rukshinie_Fernando",
-    "department":"TDP",
-    "attID":"rf824a",
-    "itemId":"4"
-    // "bio":"Rukshinie attends the University of Texas in Austin.",
-  },
-  {
-    "name":"Chelsea Secker",
-    "shortname":"Chelsea_Secker",
-    "department":"College Recruiting",
-    "attID":"cs110y",
-    "itemId":"5"
-    // "bio":"Rukshinie attends the University of Texas in Austin.",
-  },
-  {
-    "name":"Elizabeth Winters",
-    "shortname":"Elizabeth_Winters",
-    "department":"College Recruiting",
-    "attID":"ew246u",
-    "itemId":"6"
-    // "bio":"Rukshinie attends the University of Texas in Austin.",
-  },
-  {
-    "name":"Jennifer Langston",
-    "shortname":"Jennifer_Langston",
-    "department":"College Recruiting",
-    "attID":"jk4091",
-    "itemId":"7"
-    // "bio":"Rukshinie attends the University of Texas in Austin.",
-  },
-  {
-    "name":"Andrew Bidinger",
-    "shortname":"Andrew_Bidinger",
-    "department":"College Recruiting",
-    "attID":"ab734j",
-    "itemId":"8"
-    // "bio":"Rukshinie attends the University of Texas in Austin.",
-  },
-  {
-    "name":"Randall Stephenson",
-    "shortname":"Randall_Stephenson",
-    "department":"Chairman",
-    "attID":"rs2982",
-    "itemId":"9"
-    // "bio":"Rukshinie attends the University of Texas in Austin.",
-  }
-];
-
-// retrieve users from Parse
-
-var UserClass = Parse.Object.extend("Users");
-var query = new Parse.Query(UserClass);
-
-query.find( {
-    success: function(results) {
-        $scope.users = [];
-        for (var i=0; i < results.length; i++) {
-            var resultsUser = {
-                name : results[i].get("name"),
-                attuid : results[i].get("username"),
-                location : results[i].get("location"),
-                department: results[i].get("department")
-            }
-            $scope.users.push(resultsUser);
-        }
-    }, error: function(results) {
-        alert("Error with Retrieving Users")
-    }
-});
-
-// shows order in which employees will appear
-$scope.employeeOrder = 'name';
-  
-
-
-  $scope.getItemId = function(val) {
-    // alert(val);
-    $state.go('details');
-  }
-
+// restaurant information
 
 $scope.restaurants = 
 [
@@ -243,9 +126,35 @@ $scope.restaurants =
   }
 
 ];
+
 // shows order in which restaurants will appear
 $scope.restaurantOrder = 'Distance';
 
+// retrieve users/employees from Parse
+
+var UserClass = Parse.Object.extend("Users");
+var query = new Parse.Query(UserClass);
+
+query.find( {
+    success: function(results) {
+        $scope.users = [];
+        for (var i=0; i < results.length; i++) {
+            var resultsUser = {
+                name : results[i].get("name"),
+                attuid : results[i].get("username"),
+                location : results[i].get("location"),
+                department: results[i].get("department")
+            }
+            $scope.users.push(resultsUser);
+        }
+    }, error: function(results) {
+        alert("Error with Retrieving Users")
+    }
+});
+
+// shows order in which employees will appear
+$scope.employeeOrder = 'name';
+  
 $scope.events= 
 [
   {
@@ -341,6 +250,55 @@ $scope.events=
   }
 
 ]
+
+// retrieve events (and their details) for the current user from Parse
+
+var UserClass = Parse.Object.extend("Users");
+var query = new Parse.Query(UserClass);
+
+var invitedEventIds = [];
+var hostingEventIds = [];
+var acceptedEventIds = [];
+
+query.equalTo("username", localStorage.currentUser);
+query.first( {
+    success: function(object) {
+         invitedEventIds = object.get("invited");
+         hostingEventIds = object.get("hosting");
+         acceptedEventIds = object.get("going");
+    }, error: function(object) {
+        alert("Error with loading myEvents");
+    }
+});
+
+var EventClass = Parse.Object.extend("Events");
+
+var invited_query = new Parse.Query(EventClass);
+$scope.invitedEvents = [];
+
+for (var i = 0; i < invitedEventIds.length; i++){
+    invited_query.equalTo("objectId", localStorage.currentUser);
+    query.first( {
+       success: function(object) {
+            var queryEvent = {
+                restaurantName : object.get("restaurantName"),
+                restaurantAddress : object.get("restaurantAddress"),
+                date : object.get("date"),
+                startTime : object.get("startTime"),
+                endTime : object.get("endTime"),
+                hostName : object.get("hostName"),
+                isPublic : object.get("public"),
+                comments : object.get("comments"),
+                invitedList : object.get("invitedList"),
+                goingList: object.get("goingList")
+            }
+        }, error: function(object) {
+            alert("Error with loading details for invited events");
+        }
+    });
+}
+
+
 
 $scope.eventOrder = 'Day';
 
@@ -441,6 +399,10 @@ $scope.browseEvents =
 ]
 
 $scope.browseEventsOrder = 'Day';
+
+$scope.getItemId = function(val) {
+    $state.go('details');
+}
 
 $scope.onMyClick = function(){
   $(".tooltipped").tooltip({delay:50});

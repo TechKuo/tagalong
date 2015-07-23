@@ -256,49 +256,20 @@ $scope.events=
 var UserClass = Parse.Object.extend("Users");
 var query = new Parse.Query(UserClass);
 
-var invitedEventIds = [];
-var hostingEventIds = [];
-var acceptedEventIds = [];
+$scope.invitedEvents = [];
+$scope.hostingEvents = [];
+$scope.acceptedEvents = [];
 
 query.equalTo("username", localStorage.currentUser);
 query.first( {
     success: function(object) {
-         invitedEventIds = object.get("invited");
-         hostingEventIds = object.get("hosting");
-         acceptedEventIds = object.get("going");
+         $scope.invitedEvents = object.get("invited");
+         $scope.hostingEvents = object.get("hosting");
+         $scope.acceptedEvents = object.get("going");
     }, error: function(object) {
         alert("Error with loading myEvents");
     }
 });
-
-var EventClass = Parse.Object.extend("Events");
-
-var invited_query = new Parse.Query(EventClass);
-$scope.invitedEvents = [];
-
-for (var i = 0; i < invitedEventIds.length; i++){
-    invited_query.equalTo("objectId", localStorage.currentUser);
-    query.first( {
-       success: function(object) {
-            var queryEvent = {
-                restaurantName : object.get("restaurantName"),
-                restaurantAddress : object.get("restaurantAddress"),
-                date : object.get("date"),
-                startTime : object.get("startTime"),
-                endTime : object.get("endTime"),
-                hostName : object.get("hostName"),
-                isPublic : object.get("public"),
-                comments : object.get("comments"),
-                invitedList : object.get("invitedList"),
-                goingList: object.get("goingList")
-            }
-        }, error: function(object) {
-            alert("Error with loading details for invited events");
-        }
-    });
-}
-
-
 
 $scope.eventOrder = 'Day';
 

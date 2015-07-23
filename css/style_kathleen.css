@@ -155,7 +155,7 @@ a.small {
   background: #81017e;
   color: #EEE8D5;
   /*width: 90%;*/
-  min-width: 320px;
+  /*min-width: 320px;*/
   /*So it can expand to size of phone*/
   max-width: auto; 
   margin: 0 auto;
@@ -361,6 +361,10 @@ img.displayed {
 
 img {
   margin: 20px;
+}
+
+label{
+  color:#666666;
 }
 
 .img-responsive {

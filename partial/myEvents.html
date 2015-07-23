@@ -8,14 +8,16 @@
 
 <!-- List of restaurants -->
 <div class="container">
+	<!-- Jumbotron -->
+    <div class="jumbotron" style="padding: 15px;">
+        <h2 class="text-center">Hosted Events</h2>
+    </div>
 	<ul class="list-group">
-
-		<li class="list-group-item" ng-repeat="item in events | filter: query | orderBy : eventOrder ">
-		    <a ng-href="#/myEvents/{{events.indexOf(item)}}">
-			   <!-- <img ng-src="images/Restaurant Logos/{{value.Restaurant}}.jpg" alt="Photo of {{value.Restaurant}}"> -->
-			   <a ng-href="{{item.Website}}">
-				  <h2>{{item.Restaurant}}</h2>
-				</a>
+		<li class="list-group-item" ng-repeat="item in hostedEvents | filter: query | orderBy : eventOrder ">
+		    	<a ng-href="#/myEvents/{{events.indexOf(item)}}">
+			   	<!-- <img ng-src="images/Restaurant Logos/{{value.Restaurant}}.jpg" alt="Photo of {{value.Restaurant}}"> -->
+				<h2>{{event.RestaurantName}}</h2>
+				<h3>{{event.RestaurantAddress}}</h2>
 				<h3>{{item.Date}}{{item.Day}}</h3>
 				<h3>{{item.Time}}</h3>
 				  <!-- Add popover to show names of people going -->
@@ -39,8 +41,6 @@
 	        $(document).ready(function(){
 	        	$(".tooltipped").tooltip({delay:50});
 	        });
-
-	      
 
     </script>
 

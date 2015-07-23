@@ -40,8 +40,6 @@ angular.module('myApp')
 
         $scope.createEvent = function(){
 
-            var newEventId = "";
-
             var EventClass = Parse.Object.extend("Events");
             var newEvent = new EventClass();
 
@@ -50,9 +48,7 @@ angular.module('myApp')
             newEvent.set("date", $scope.date);
             newEvent.set("startTime", $scope.startTime);
             newEvent.set("endTime", $scope.endTime);
-            newEvent.set("going", []);
             newEvent.set("goingList", "");
-            newEvent.set("invited", $scope.invitedArray);
             newEvent.set("invitedList", $scope.invited);
             newEvent.set("hostName", localStorage.userName);
             newEvent.set("public", $scope.isPublic === "Private"  ? false : true);
@@ -60,9 +56,6 @@ angular.module('myApp')
             
             newEvent.save(null,{
                 success: function(result) {
-                    // save new event id
-                    newEventId = result.id;
-
                     // save event into Parse
                     newEvent.set("objectId", result.id);
                     newEvent.save();
@@ -87,7 +80,7 @@ angular.module('myApp')
                 invited_query.first( {
                     success: function(object) {
                         var newInvitedList = object.get("invited");
-                        newInvitedList.push(newEventId);
+                        newInvitedList.push(newEvent.attributes);
                         object.set("invited", newInvitedList);
                         object.save();
                     }, error: function(object) {
@@ -102,7 +95,7 @@ angular.module('myApp')
             hosting_query.first( {
                 success: function(object) {
                     var newHostingList = object.get("hosting");
-                    newHostingList.push(newEventId);
+                    newHostingList.push(newEvent.attributes);
                     object.set("hosting", newHostingList);
                     object.save();
                 }, error: function(object) {

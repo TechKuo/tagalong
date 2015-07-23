@@ -8,7 +8,8 @@ myApp.config( function($stateProvider, $urlRouterProvider) {
 
   $stateProvider.state('index', {
     url:'',
-    templateUrl: 'partial/myEvents.html'
+    templateUrl: 'partial/myEvents.html',
+    controller: 'MyEventsController'
   });
    
   $stateProvider.state('list', {
@@ -23,7 +24,8 @@ myApp.config( function($stateProvider, $urlRouterProvider) {
 
   $stateProvider.state('myEvents', {
     url:'/myEvents',
-    templateUrl: 'partial/myEvents.html'
+    templateUrl: 'partial/myEvents.html',
+    controller: 'MyEventsController'
   }); 
 
   $stateProvider.state('browseEvents', {

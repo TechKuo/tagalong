@@ -251,27 +251,7 @@ $scope.events=
 
 ]
 
-// retrieve events (and their details) for the current user from Parse
-
-var UserClass = Parse.Object.extend("Users");
-var query = new Parse.Query(UserClass);
-
-$scope.invitedEvents = [];
-$scope.hostingEvents = [];
-$scope.acceptedEvents = [];
-
-query.equalTo("username", localStorage.currentUser);
-query.first( {
-    success: function(object) {
-         $scope.invitedEvents = object.get("invited");
-         $scope.hostingEvents = object.get("hosting");
-         $scope.acceptedEvents = object.get("going");
-    }, error: function(object) {
-        alert("Error with loading myEvents");
-    }
-});
-
-$scope.eventOrder = 'Day';
+$scope.eventOrder = 'date';
 
 $scope.browseEvents = 
 [

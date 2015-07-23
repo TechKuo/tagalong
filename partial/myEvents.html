@@ -1,46 +1,46 @@
-<!-- Top search bar -->
-<div class="search">
-	<h1>My Events</h1>
-	<label>search: </label>
-	<input ng-model="query" placeholder="Search my events" autofocus>
-</div>
+<div ng-controller="MyEventsController" >
+	<!-- Top search bar -->
+	<div class="search">
+		<h1>My Events</h1>
+		<label>search: </label>
+		<input ng-model="query" placeholder="Search my events" autofocus>
+	</div>
 
 
-<!-- List of restaurants -->
-<div class="container">
-	<!-- Jumbotron -->
-    <div class="jumbotron" style="padding: 15px;">
-        <h2 class="text-center">Hosted Events</h2>
-    </div>
-	<ul class="list-group">
-		<li class="list-group-item" ng-repeat="item in hostedEvents | filter: query | orderBy : eventOrder ">
-		    	<a ng-href="#/myEvents/{{events.indexOf(item)}}">
-			   	<!-- <img ng-src="images/Restaurant Logos/{{value.Restaurant}}.jpg" alt="Photo of {{value.Restaurant}}"> -->
-				<h2>{{event.RestaurantName}}</h2>
-				<h3>{{event.RestaurantAddress}}</h2>
-				<h3>{{item.Date}}{{item.Day}}</h3>
-				<h3>{{item.Time}}</h3>
-				  <!-- Add popover to show names of people going -->
-				<h3>Attending: {{item.Going}}</h3>
-				</a>
-				 	<!-- Supposed to be popover for people who are invited -->
-				<a class="a-right tooltipped" data-toggle="tooltip" data-tooltip="{{item.People}}" title="{{item.People}}" data-position="right" ng-click="onMyClick()">
-  					<h3 style="max-width=auto">Invited: {{item.Invited}}</h3>
-				</a>
-				  
-				<h3>Status: {{item.Status}}</h3>
-            
-		</li>
-
-	</ul>
-
+	<!-- List of restaurants -->
+	<div class="container">
+		<!-- Jumbotron -->
+	    <div class="jumbotron" style="padding: 15px;">
+	        <h2 class="text-center">Events You are Hosting</h2>
+	    </div>
+		<ul class="list-group">
+			<li class="list-group-item" ng-repeat="event in hostingEvents">
+			    	<!--<a ng-href="#/myEvents/{{events.indexOf(item)}}">-->
+				   	<!-- <img ng-src="images/Restaurant Logos/{{value.Restaurant}}.jpg" alt="Photo of {{value.Restaurant}}"> -->
+					<h2>{{event.restaurantName}}</h2>
+					<br>
+					<h3>Address: {{event.restaurantAddress}}</h2>
+					<h3>Date: {{event.date}}</h3>
+					<h3>Time: {{event.startTime}}-{{event.endTime}}</h3>
+					<h3>Host: {{event.hostName}}</h3>
+					<h3>Attending: ({{event.goingList.split(", ").length}}) : {{event.goingList}}</h3>
+					<h3>Invited ({{event.invitedList.split(", ").length}}) : {{event.invitedList}}</h3>
+					<h3>{{event.public ? "Public" : "Private"}}</h3>
+					<h5>Comments: {{event.comments}}</h5>
+					<!-- Add popover to show names of people going -->
+					<!--</a> -->
+					<!-- Supposed to be popover for people who are invited -
+					<a class="a-right tooltipped" data-toggle="tooltip" data-tooltip="{{item.People}}" title="{{item.People}}" data-position="right" ng-click="onMyClick()">
+	  					<h3 style="max-width=auto">Invited: {{item.Invited}}</h3>
+					</a>-->
+			</li>
+		</ul>
+	</div>
 </div>
 
 	<script> 
-
 	        $(document).ready(function(){
 	        	$(".tooltipped").tooltip({delay:50});
 	        });
-
     </script>
 

@@ -16,13 +16,12 @@
 
 
 <!-- List of restaurants -->
-<div class="container">
+<!-- <div class="container">
 	<ul class="list-group">
 
 		<li class="list-group-item" ng-repeat="item in browseEvents | filter: query | orderBy : browseEventsOrder ">
 			<span ng-class-odd="'odd'" ng-class-even="'even'">
-		    <!-- <a ng-href="#/myEvents/{{events.indexOf(item)}}"> -->
-			   <!-- <img ng-src="images/Restaurant Logos/{{value.Restaurant}}.jpg" alt="Photo of {{value.Restaurant}}"> -->
+
 				<a ng-href="{{item.Website}}">
 					<h2>{{item.Restaurant}}</h2>
 				</a>
@@ -32,4 +31,26 @@
 				<h3>Invited: {{item.Invited}}</h3>            
 		</li>
 	</ul>
-</div>
+</div> -->
+
+  <ul class="collapsible" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header">hey{{item.Website}}</div>
+      <div class="collapsible-body" ng-repeat="item in browseEvents | filter: query | orderBy : browseEventsOrder ">
+      	<p>
+			<h3>{{item.Date}}{{item.Day}}</h3>
+			<h3>{{item.Time}}</h3>
+			<h3>Attending: {{item.Going}}</h3>
+			<h3>Invited: {{item.Invited}}</h3> 
+      	</p>
+      </div>
+    </li>
+  </ul>
+
+<script>
+    $(document).ready(function(){
+    $('.collapsible').collapsible({
+      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+  });
+    </script>

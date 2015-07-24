@@ -8,19 +8,20 @@
 
   <div class="container">
     <ul class="collapsible" data-collapsible="expandable" >
-      <li ng-init="testFunction()" ng-repeat="event in publicEvents  | filter: query | orderBy : browseEventsOrder ">
-        <div class="collapsible-header" style="height: auto">
-        	<h2>{{event.restaurantName}}</h2>
-        	<h3>{{event.date}}</h3>
-        	<h3>{{event.startTime}} - {{event.endTime}}</h3>
+      <li ng-init="testFunction()" ng-repeat="event in publicEvents  | filter: query | orderBy : eventOrder ">
+        <div class="collapsible-header" style="padding:15px; padding-bottom:5px">
+        	<img src="{{event.icon}}" class="pull-left" style="margin: 0px">
+        	<h2 style="float:left; padding-top:10px; padding-left: 8px">{{event.restaurantName}}</h2><h3 style="float:right; padding-top:10px">{{event.date}}</h3>
+        	
         </div>
         <div class="collapsible-body">
-          <h3>Address: {{event.restaurantAddress}}</h2>
-          <h3>Host: {{event.hostName}}</h3>
-          <h3>Attending: ({{event.goingList.split(", ").length}}) : {{event.goingList}}</h3>
-          <h3>Pending ({{event.invitedList.split(", ").length}}) : {{event.invitedList}}</h3>
-          <h5>Comments: {{event.comments}}</h5>
-          <button ng-click="acceptInvite(event)" type="button" 
+        	<h3>• {{event.startTime}} - {{event.endTime}}</h3>
+          	<h3>• Address: {{event.restaurantAddress}}</h2>
+          	<h3>• Host: {{event.hostName}}</h3>
+          	<h3>• Attending: ({{event.goingList.split(", ").length}}) : {{event.goingList}}</h3>
+          	<h3>• Pending ({{event.invitedList.split(", ").length}}) : {{event.invitedList}}</h3>
+          	<h5>• Comments: </h5><h5 style="font-style: italic">{{event.comments}}</h5>
+          	<button ng-click="acceptInvite(event)" type="button" 
                     class="btn btn-primary btn-block btn-signin">
             <!-- Keep space between word and icon -->
                   <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>  Tagalong

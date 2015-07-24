@@ -67,7 +67,6 @@ myApp.config( function($stateProvider, $urlRouterProvider) {
        $log.log($scope.id);
           
     }
-
   });
 
   $stateProvider.state('create_event', {
@@ -75,7 +74,7 @@ myApp.config( function($stateProvider, $urlRouterProvider) {
     templateUrl: 'partial/createEvent.html',
     controller: 'CreateEventController'
   });
-   
+  
 });
 
 myApp.run(['$rootScope', '$location', function($rootScope, $location) {

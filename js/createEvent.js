@@ -2,10 +2,18 @@ angular.module('myApp')
     .controller('CreateEventController',  ['$scope', '$rootScope', '$location', '$state','$stateParams', 
         function ($scope, $rootScope, $location, $state, $stateParams) {
 
+        var defaultIcon = "images/food_icon/cutlery50.png";
+
         $scope.restaurantId = $stateParams.itemId;
-        $scope.restaurantName = $scope.restaurants[$scope.restaurantId].Restaurant;
-        $scope.restaurantAddress = $scope.restaurants[$scope.restaurantId].Address;
-        $scope.restaurantIcon = $scope.restaurants[$scope.restaurantId].icon;
+        if ($scope.restaurantId !== "!"){
+            $scope.restaurantName = $scope.restaurants[$scope.restaurantId].Restaurant;
+            $scope.restaurantAddress = $scope.restaurants[$scope.restaurantId].Address;
+            $scope.restaurantIcon = $scope.restaurants[$scope.restaurantId].icon;
+            $scope.customEvent = false;
+        }
+        else {
+            $scope.customEvent = true;
+        }
         $scope.date = "";
         $scope.startTime = "";
         $scope.endTime = "";
@@ -13,6 +21,13 @@ angular.module('myApp')
         $scope.invitedArray = [];
         $scope.isPublic = "";
         $scope.comments = "";
+
+        var formatDate = function(date){
+            var lastDotIndex = date.lastIndexOf(".");
+            var MMDD = date.substring(0, lastDotIndex);
+            var newDate = MMDD.replace(".","/");
+            return newDate;
+        };
 
         // function for adding people to the invited list
         $scope.addPerson = function(employee){
@@ -45,8 +60,8 @@ angular.module('myApp')
 
             newEvent.set("restaurantName", $scope.restaurantName);
             newEvent.set("restaurantAddress", $scope.restaurantAddress);
-            newEvent.set("icon", $scope.restaurantIcon);
-            newEvent.set("date", $scope.date);
+            newEvent.set("icon", $scope.customEvent ? defaultIcon : $scope.restaurantIcon);
+            newEvent.set("date", formatDate($scope.date));
             newEvent.set("startTime", $scope.startTime);
             newEvent.set("endTime", $scope.endTime);
             newEvent.set("goingList", localStorage.userName);

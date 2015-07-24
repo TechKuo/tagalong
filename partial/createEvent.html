@@ -11,16 +11,18 @@
 
 				<div class="form-group" >
 					<label for="restaurant_name">Restaurant Name </label>
-					<p id="restaurant_name" ng-model="restaurantName" class="form-control" name="restaurantName"> 
+					<p ng-hide="customEvent" id="restaurant_name" ng-model="restaurantName" class="form-control" name="restaurantName"> 
 						{{restaurants[restaurantId].Restaurant}}
 					</p>
+          <input ng-show="customEvent" id="restaurant_name" ng-model="restaurantName" class="form-control" name="restaurantName">
 				</div>
 
 				<div class="form-group" >
 					<label for="restaurant_address">Restaurant Address </label>
-					<p id="restaurant_address" ng-model="restaurantAddress" class="form-control" name="restaurantAddress">
+					<p ng-hide="customEvent" id="restaurant_address" ng-model="restaurantAddress" class="form-control" name="restaurantAddress">
 						{{restaurants[restaurantId].Address}}
 					</p>
+          <input ng-show="customEvent" id="restaurant_address" ng-model="restaurantAddress" class="form-control" name="restaurantAddress">
 				</div>
 
 				<div class="form-group">

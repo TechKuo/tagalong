@@ -9,7 +9,7 @@
     "Hours":"Mon-Thu, Sun 11 am - 10 pm & Fri-Sat 11 am - 12 am",
     "Phone Number":"214-760-9491",
     "Website":"http://www.wingbucket.com"
-    "icon":"images/food_icon/chicken25.png"
+    "icon":"images/food_icon/chicken50.png"
   },
   {
     "Restaurant":"Chop House Burger",
@@ -21,7 +21,7 @@
     "Hours":"Mon-Thu, Sun 11 am - 9 pm & Fri-Sat 11 am - 10 pm",
     "Phone Number":"214-741-2747",
     "Website":"http://www.chophouseburger.com" 
-    "icon":"images/food_icon/burger25.png"
+    "icon":"images/food_icon/burger50.png"
   },
   {
     "Restaurant":"Which Wich",
@@ -33,7 +33,7 @@
     "Hours":"Mon-Wed 10 am - 6 pm, Thu-Sat 10 am - 8 pm, Sun 10 am - 3 pm",
     "Phone Number":"214-741-9424",
     "Website":"http://www.whichwich.com" 
-    "icon":"images/food_icon/sandwich25.png"
+    "icon":"images/food_icon/sandwich50.png"
   },
   {
     "Restaurant":"Iron Cactus",
@@ -45,7 +45,7 @@
     "Hours":"Mon-Wed 11 am - 10 pm, Thu-Sat 11 am - 11pm, Sun 10 am - 10 pm",
     "Phone Number":"214-749-4766",
     "Website":"http://www.ironcactus.com" 
-    "icon":"images/food_icon/taco25.png"
+    "icon":"images/food_icon/taco50.png"
   },
   {
     "Restaurant":"Pho Colonial",
@@ -57,7 +57,7 @@
     "Hours":"M-F 11 am - 9:30 pm",
     "Phone Number":"469-480-3059",
     "Website":"http://www.phocolonial.com" 
-    "icon":"images/food_icon/noodles25.png"
+    "icon":"images/food_icon/noodles50.png"
   },
   {
     "Restaurant":"Dallas Fish Market",
@@ -69,7 +69,7 @@
     "Hours":"Lunch: Mon-Fri 11 am - 2 pm; Dinner: Mon-Thu 5 pm - 10 pm, Fri-Sat 5 pm - 11 pm, Sun 5 pm - 9 pm",
     "Phone Number":"214-744-3474",
     "Website":"http://www.dallasfishmarket.com" 
-    "icon":"images/food_icon/fish25.png"
+    "icon":"images/food_icon/fish50.png"
   },
   {
     "Restaurant":"City Tavern",
@@ -81,7 +81,7 @@
     "Hours":"Mon-Fri 11 am - 2 am, Sat-Sun 12 pm - 2 am",
     "Phone Number":"214-745-1402",
     "Website":"http://www.citytaverndowntown.com" 
-    "icon":"images/food_icon/burger25.png"
+    "icon":"images/food_icon/burger50.png"
   },
   {
     "Restaurant":"Campisi's",
@@ -93,7 +93,7 @@
     "Hours":"Mon-Sat 10:30 am - 10 pm & Sun 11 am - 9 pm",
     "Phone Number":"214-752-0141",
     "Website":"http://www.campisis.us" 
-    "icon":"images/food_icon/pizza25.png"
+    "icon":"images/food_icon/pizza50.png"
   },
   {
     "Restaurant":"Freshii",
@@ -105,7 +105,7 @@
     "Hours":"Mon-Thu 8 am - 7 pm, Fri 8 am - 5 pm & Sat 10 am - 3 pm",
     "Phone Number":"214-748-6000",
     "Website":"https://freshii.com/us" 
-    "icon":"images/food_icon/salad25.png"
+    "icon":"images/food_icon/salad50.png"
   },
   {
     "Restaurant":"Texas Spice",
@@ -117,7 +117,7 @@
     "Hours":"Lunch: Mon-Sun 6:30 am - 2 pm; Dinner 5pm - 10 pm",
     "Phone Number":"214-744-6664",
     "Website":"http://www.omnihotels.com/hotels/dallas/dining/texas-spice" 
-    "icon":"images/food_icon/burger25.png"
+    "icon":"images/food_icon/burger50.png"
   }
 
 ]

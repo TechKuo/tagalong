@@ -14,17 +14,18 @@
 	        <h2 class="text-center">Hosting</h2>
 	    </div>
 		<ul class="collapsible" data-collapsible="expandable">
-			<li ng-init="testFunction()" ng-repeat="event in hostingEvents">
+			<li ng-init="testFunction()" ng-repeat="event in hostingEvents | filter : query | orderBy: eventOrder">
 			<div class="collapsible-header" style="height: auto">
 		    	<!--<a ng-href="#/myEvents/{{events.indexOf(item)}}">-->
 			   	<!-- <img ng-src="images/Restaurant Logos/{{value.Restaurant}}.jpg" alt="Photo of {{value.Restaurant}}"> -->
+				<img src="{{event.icon}}" class="pull-left">
 				<h2>{{event.restaurantName}}</h2>
-				<br>
+				<h3>Date: {{event.date}}</h3>
+				
 			</div>
 			<div class="collapsible-body">
-				<h3>Address: {{event.restaurantAddress}}</h2>
-				<h3>Date: {{event.date}}</h3>
 				<h3>Time: {{event.startTime}}-{{event.endTime}}</h3>
+				<h3>Address: {{event.restaurantAddress}}</h2>
 				<h3>Host: {{event.hostName}}</h3>
 				<h3>Attending: ({{event.goingList.split(", ").length}}) : {{event.goingList}}</h3>
 				<h3>Pending ({{event.invitedList.split(", ").length}}) : {{event.invitedList}}</h3>
@@ -45,17 +46,18 @@
 	        <h2 class="text-center">Going</h2>
 	    </div>
 		<ul class="collapsible" data-collapsible="expandable">
-			<li ng-init="testFunction()" ng-repeat="event in acceptedEvents">
+			<li ng-init="testFunction()" ng-repeat="event in acceptedEvents | filter : query | orderBy : eventOrder">
 			<div class="collapsible-header" style="height: auto">
 		    	<!--<a ng-href="#/myEvents/{{events.indexOf(item)}}">-->
 			   	<!-- <img ng-src="images/Restaurant Logos/{{value.Restaurant}}.jpg" alt="Photo of {{value.Restaurant}}"> -->
+				<img src="{{event.icon}}" class="pull-left">
 				<h2>{{event.restaurantName}}</h2>
-				<br>
+				<h3>Date: {{event.date}}</h3>
+				
 			</div>
 			<div class="collapsible-body">
-				<h3>Address: {{event.restaurantAddress}}</h2>
-				<h3>Date: {{event.date}}</h3>
 				<h3>Time: {{event.startTime}}-{{event.endTime}}</h3>
+				<h3>Address: {{event.restaurantAddress}}</h2>
 				<h3>Host: {{event.hostName}}</h3>
 				<h3>Attending: ({{event.goingList.split(", ").length}}) : {{event.goingList}}</h3>
 				<h3>Pending ({{event.invitedList.split(", ").length}}) : {{event.invitedList}}</h3>
@@ -76,17 +78,18 @@
 	        <h2 class="text-center">Invited</h2>
 	    </div>
 		<ul class="collapsible" data-collapsible="expandable">
-			<li ng-init="testFunction()" ng-repeat="event in invitedEvents">
+			<li ng-init="testFunction()" ng-repeat="event in invitedEvents | filter : query | orderBy : eventOrder">
 			<div class="collapsible-header" style="height: auto">
 		    	<!--<a ng-href="#/myEvents/{{events.indexOf(item)}}">-->
 			   	<!-- <img ng-src="images/Restaurant Logos/{{value.Restaurant}}.jpg" alt="Photo of {{value.Restaurant}}"> -->
+				<img src="{{event.icon}}" class="pull-left">
 				<h2>{{event.restaurantName}}</h2>
-				<br>
+				<h3>Date: {{event.date}}</h3>
+				
 			</div>
 			<div class="collapsible-body">
-				<h3>Address: {{event.restaurantAddress}}</h2>
-				<h3>Date: {{event.date}}</h3>
 				<h3>Time: {{event.startTime}}-{{event.endTime}}</h3>
+				<h3>Address: {{event.restaurantAddress}}</h2>
 				<h3>Host: {{event.hostName}}</h3>
 				<h3>Attending: ({{event.goingList.split(", ").length}}) : {{event.goingList}}</h3>
 				<h3>Pending ({{event.invitedList.split(", ").length}}) : {{event.invitedList}}</h3>

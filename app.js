@@ -30,18 +30,19 @@ myApp.config( function($stateProvider, $urlRouterProvider) {
 
   $stateProvider.state('browseEvents', {
     url:'/browseEvents',
-    templateUrl: 'partial/browseEvents.html'
+    templateUrl: 'partial/browseEvents.html',
+    controller: 'BrowseEventsController'
   }); 
 
   $stateProvider.state('login', {
     url:'/login',
-    templateUrl: 'signin.html',
+    templateUrl: 'partial/signin.html',
     controller: 'SignInController'
   });
 
   $stateProvider.state('register',{
     url:'/register',
-    templateUrl: 'signup.html',
+    templateUrl: 'partial/signup.html',
     controller: 'SignUpController'
   });
 

@@ -5,6 +5,7 @@ angular.module('myApp')
         $scope.restaurantId = $stateParams.itemId;
         $scope.restaurantName = $scope.restaurants[$scope.restaurantId].Restaurant;
         $scope.restaurantAddress = $scope.restaurants[$scope.restaurantId].Address;
+        $scope.restaurantIcon = $scope.restaurants[$scope.restaurantId].icon;
         $scope.date = "";
         $scope.startTime = "";
         $scope.endTime = "";
@@ -44,6 +45,7 @@ angular.module('myApp')
 
             newEvent.set("restaurantName", $scope.restaurantName);
             newEvent.set("restaurantAddress", $scope.restaurantAddress);
+            newEvent.set("icon", $scope.restaurantIcon);
             newEvent.set("date", $scope.date);
             newEvent.set("startTime", $scope.startTime);
             newEvent.set("endTime", $scope.endTime);

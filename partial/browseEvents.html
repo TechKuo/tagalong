@@ -1,27 +1,36 @@
-<!-- Top search bar -->
-<div class="search">
-	<h1>Browse Events</h1>
-	<label>search: </label>
-	<input ng-model="query" placeholder="Browse public events" autofocus> 
-</div>
+<body ng-app="myApp" ng-controller="BrowseEventsController">
+  <!-- Top search bar -->
+  <div class="search">
+  	<h1>Browse Events</h1>
+  	<label>search: </label>
+  	<input ng-model="query" placeholder="Browse public events" autofocus> 
+  </div>
 
+  <div class="container">
+    <ul class="collapsible" data-collapsible="expandable" >
+      <li ng-init="testFunction()" ng-repeat="event in publicEvents  | filter: query | orderBy : browseEventsOrder ">
+        <div class="collapsible-header" style="height: auto">
+        	<h2>{{event.restaurantName}}</h2>
+        	<h3>{{event.date}}</h3>
+        	<h3>{{event.startTime}} - {{event.endTime}}</h3>
+        </div>
+        <div class="collapsible-body">
+          <h3>Address: {{event.restaurantAddress}}</h2>
+          <h3>Host: {{event.hostName}}</h3>
+          <h3>Attending: ({{event.goingList.split(", ").length}}) : {{event.goingList}}</h3>
+          <h3>Pending ({{event.invitedList.split(", ").length}}) : {{event.invitedList}}</h3>
+          <h5>Comments: {{event.comments}}</h5>
+          <button ng-click="acceptInvite(event)" type="button" 
+                    class="btn btn-primary btn-block btn-signin">
+            <!-- Keep space between word and icon -->
+                  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>  Tagalong
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
 
-  <ul class="collapsible" data-collapsible="expandable" >
-    <li ng-init="testFunction()" ng-repeat="item in browseEvents  | filter: query | orderBy : browseEventsOrder ">
-      <div class="collapsible-header" style="height: auto">
-      	<h2>{{item.Restaurant}}</h2>
-      	<h3>{{item.Date}}{{item.Day}}</h3>
-      	<h3>{{item.Time}}</h3>
-      </div>
-      <div class="collapsible-body">
-
-			<h3>Attending: {{item.Going}}</h3>
-			<h3>Invited: {{item.Invited}}</h3>
-			<h3>Comments: {{item.Comments}}</h3>
-      	
-      </div>
-    </li>
-  </ul>
+</body>
 
 <script>
     $(document).ready(function(){
@@ -29,7 +38,5 @@
       accordion : false,  // A setting that changes the collapsible behavior to expandable instead of the default accordion style
       
     });
-    console.log('test')
   });
-
-    </script>
+</script>

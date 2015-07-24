@@ -4,13 +4,7 @@
 	<label>search: </label>
 	<input ng-model="query" placeholder="Browse public events" autofocus> 
 
-	<label class="formgroup">by:
-	<select ng-model="eventOrder">
-		<option value="Day">Upcoming</option>
-		<!-- Come back to this one, change reknown to department -->
-		<option value="Restaurant">Restaurant</option>
-	</select>
-	</label>
+
 
 </div>
 
@@ -32,32 +26,20 @@
 		</li>
 	</ul>
 </div> -->
- <ul class="collapsible" data-collapsible="accordion">
-    <li>
-      <div class="collapsible-header">First</div>
-      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-    </li>
-    <li>
-      <div class="collapsible-header">Second</div>
-      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-    </li>
-    <li>
-      <div class="collapsible-header">Third</div>
-      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-    </li>
-  </ul>
 
 
-  <ul class="collapsible" data-collapsible="accordion" >
-    <li ng-repeat="item in browseEvents | filter: query | orderBy : browseEventsOrder " >
-      <div class="collapsible-header">{{item.Restaurant}}</div>
+  <ul class="collapsible" data-collapsible="expandable" >
+    <li ng-init="testFunction()" ng-repeat="item in browseEvents  | filter: query | orderBy : browseEventsOrder ">
+      <div class="collapsible-header" style="height: auto">
+      	<h2>{{item.Restaurant}}</h2>
+      	<h3>{{item.Date}}{{item.Day}}</h3>
+      	<h3>{{item.Time}}</h3>
+      </div>
       <div class="collapsible-body">
-      	<p>
-			<h3>{{item.Date}}{{item.Day}}</h3>
-			<h3>{{item.Time}}</h3>
+
 			<h3>Attending: {{item.Going}}</h3>
 			<h3>Invited: {{item.Invited}}</h3>
-      	</p>
+      	
       </div>
     </li>
   </ul>
@@ -65,7 +47,10 @@
 <script>
     $(document).ready(function(){
     $('.collapsible').collapsible({
-      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+      accordion : false,  // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+      
     });
+    console.log('test')
   });
+
     </script>

@@ -10,7 +10,6 @@ angular.module('myApp')
         $scope.endTime = "";
         $scope.invited = "";
         $scope.invitedArray = [];
-        $scope.hostName = "";
         $scope.isPublic = "";
         $scope.comments = "";
 
@@ -48,7 +47,7 @@ angular.module('myApp')
             newEvent.set("date", $scope.date);
             newEvent.set("startTime", $scope.startTime);
             newEvent.set("endTime", $scope.endTime);
-            newEvent.set("goingList", "");
+            newEvent.set("goingList", localStorage.userName);
             newEvent.set("invitedList", $scope.invited);
             newEvent.set("hostName", localStorage.userName);
             newEvent.set("public", $scope.isPublic === "Private"  ? false : true);
@@ -66,6 +65,7 @@ angular.module('myApp')
                     // redirect to myEvents
                     $location.path('/myEvents');
                     if(!$scope.$$phase) $scope.$apply();
+
                 }, error: function(result) {
                     alert("Error creating event.");
                 }
@@ -80,7 +80,7 @@ angular.module('myApp')
                 invited_query.first( {
                     success: function(object) {
                         var newInvitedList = object.get("invited");
-                        newInvitedList.push(newEvent.attributes);
+                        newInvitedList.push(newEvent.id);
                         object.set("invited", newInvitedList);
                         object.save();
                     }, error: function(object) {
@@ -95,7 +95,7 @@ angular.module('myApp')
             hosting_query.first( {
                 success: function(object) {
                     var newHostingList = object.get("hosting");
-                    newHostingList.push(newEvent.attributes);
+                    newHostingList.push(newEvent.id);
                     object.set("hosting", newHostingList);
                     object.save();
                 }, error: function(object) {

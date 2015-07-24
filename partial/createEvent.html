@@ -142,17 +142,20 @@
     				</select>
 				</div>
 
+
+  <!-- Trigger the modal with a button -->
+        <button type="button" class=" inviteButton btn-primary btn-block " style="margin-bottom:7px"
+        data-toggle="modal" data-target="#myModal" >Invite Others</button>
+
+       
+
 				<div class="form-group">
-				<label for="invited">Invited </label>
+				<label for="invited">Invited Recipients </label>
 					<p id="invited" ng-model="invited" class="form-control" name="invited">{{invited}}</p>
 				</div>	
 
-				<!-- Trigger the modal with a button -->
-				<button type="button" class="btn btn-primary btn-block btn-signin" 
-				data-toggle="modal" data-target="#myModal" style="margin-left: 0">Invite</button>
-
-				<button type="button" class="btn btn-primary btn-block btn-signin" 
-				ng-click="backspace()" style="margin-top: 20px">Backspace</button>
+			 <button type="button" class="btn btn-primary btn-block btn-signin" 
+        ng-click="backspace()" style="margin-top: 5px; margin-left:auto; margin-right:auto; vertical-align:middle">Delete</button>
 
 				<!-- Modal -->
 				<div id="myModal" class="modal fade" role="dialog">
@@ -162,9 +165,9 @@
 				      	<!-- Top search bar -->
 						<div class="search">
 							<button type="button" class="close" data-dismiss="modal" style="color: #EEE8D5; font-size: 3rem">&times;</button>
-							<h1 style="font-size: 2rem">Employee Search</h1>
+							<h1 style="font-size: 2rem">Search for Employees</h1>
 							<label>search: </label>
-							<input ng-model="query" placeholder="Search for employees" autofocus>
+							<input ng-model="query" placeholder="Search" autofocus>
 						</div>
 	
 	

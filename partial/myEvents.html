@@ -24,7 +24,7 @@
 				<h3>Time: {{event.startTime}}-{{event.endTime}}</h3>
 				<h3>Host: {{event.hostName}}</h3>
 				<h3>Attending: ({{event.goingList.split(", ").length}}) : {{event.goingList}}</h3>
-				<h3>Invited ({{event.invitedList.split(", ").length}}) : {{event.invitedList}}</h3>
+				<h3>Pending ({{event.invitedList.split(", ").length}}) : {{event.invitedList}}</h3>
 				<h3>{{event.public ? "Public" : "Private"}}</h3>
 				<h5>Comments: {{event.comments}}</h5>
 				<!-- Add popover to show names of people going -->
@@ -51,7 +51,7 @@
 				<h3>Time: {{event.startTime}}-{{event.endTime}}</h3>
 				<h3>Host: {{event.hostName}}</h3>
 				<h3>Attending: ({{event.goingList.split(", ").length}}) : {{event.goingList}}</h3>
-				<h3>Invited ({{event.invitedList.split(", ").length}}) : {{event.invitedList}}</h3>
+				<h3>Pending ({{event.invitedList.split(", ").length}}) : {{event.invitedList}}</h3>
 				<h3>{{event.public ? "Public" : "Private"}}</h3>
 				<h5>Comments: {{event.comments}}</h5>
 				<!-- Add popover to show names of people going -->
@@ -78,9 +78,19 @@
 				<h3>Time: {{event.startTime}}-{{event.endTime}}</h3>
 				<h3>Host: {{event.hostName}}</h3>
 				<h3>Attending: ({{event.goingList.split(", ").length}}) : {{event.goingList}}</h3>
-				<h3>Invited ({{event.invitedList.split(", ").length}}) : {{event.invitedList}}</h3>
+				<h3>Pending ({{event.invitedList.split(", ").length}}) : {{event.invitedList}}</h3>
 				<h3>{{event.public ? "Public" : "Private"}}</h3>
 				<h5>Comments: {{event.comments}}</h5>
+				<button ng-click="acceptInvite(event)" type="button" 
+                  	class="btn btn-primary btn-block btn-signin">
+		   		 	<!-- Keep space between word and icon -->
+                	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>  Tagalong
+           		</button>
+           		<button ng-click="declineInvite(event)" type="button" 
+                  	class="btn btn-primary btn-block btn-signin" style="margin-top:20px">
+		   		 	<!-- Keep space between word and icon -->
+                	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>  Decline
+           		</button>
 				<!-- Add popover to show names of people going -->
 				<!--</a> -->
 				<!-- Supposed to be popover for people who are invited -

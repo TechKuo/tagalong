@@ -26,14 +26,14 @@
 
 					<!-- Keeling change of hvalue it was h2,h3,h3  -->
 				  	<h2>{{item.Restaurant}}</h2>
-				  	<h5>{{item.Distance + " mi"}}</h5>
+				  	<h5>{{item.Distance}}</h5>
 				 	<h5>{{item.Price}}</h5>
 				 	<div class="spacingSmall"></div>
 				 	
 				 	<!-- Keeling change moved button to bottom -->
 				 	<!-- Keeling change from class 'btn' to 'button2' which is 
 				 	near the bottom of style_kathleen.css under Justin Classes -->
-				 	  	<a ng-href="#/create_event/{{restaurants.indexOf(item)}}" class="button2 btn-primary btn-lg">
+				 	  	<a ng-href="#/create_event/{{restaurants.indexOf(item)}}" class="button2 btn-primary btn-lg pull-right">
   					<span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>  Create Event
   				</a>
             	</a>

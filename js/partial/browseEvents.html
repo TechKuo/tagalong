@@ -1,0 +1,35 @@
+<!-- Top search bar -->
+<div class="search">
+	<h1>Browse Events</h1>
+	<label>search: </label>
+	<input ng-model="query" placeholder="Browse public events" autofocus> 
+</div>
+
+
+  <ul class="collapsible" data-collapsible="expandable" >
+    <li ng-init="testFunction()" ng-repeat="item in browseEvents  | filter: query | orderBy : browseEventsOrder ">
+      <div class="collapsible-header" style="height: auto">
+      	<h2>{{item.Restaurant}}</h2>
+      	<h3>{{item.Date}}{{item.Day}}</h3>
+      	<h3>{{item.Time}}</h3>
+      </div>
+      <div class="collapsible-body">
+
+			<h3>Attending: {{item.Going}}</h3>
+			<h3>Invited: {{item.Invited}}</h3>
+			<h3>Comments: {{item.Comments}}</h3>
+      	
+      </div>
+    </li>
+  </ul>
+
+<script>
+    $(document).ready(function(){
+    $('.collapsible').collapsible({
+      accordion : false,  // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+      
+    });
+    console.log('test')
+  });
+
+    </script>

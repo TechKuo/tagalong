@@ -1,0 +1,42 @@
+<!-- Top search bar -->
+	<div class="search">
+		<h1>Browse Restaurants</h1>
+		<label>search: </label>
+		<input ng-model="query" placeholder="Search for restaurants" autofocus>
+
+		<label class="formgroup">by:
+		<select ng-model="restaurantOrder">
+			<option value="Restaurant">Name</option>
+			<option value="Distance">Distance</option>
+			<option value="Price">Price</option>
+		</select>
+		</label>
+	</div>
+		
+		
+<!-- List of restaurants -->
+	<div class="container ">
+		<ul class="list-group ">
+			<li class="list-group-item" ng-repeat="item in restaurants | filter: query | orderBy : restaurantOrder">
+			 
+  				<a ng-href="#/rest_details/{{restaurants.indexOf(item)}}">
+					<img class="pull-left" ng-src="images/Restaurant Logos/{{item.Restaurant}}.jpg" alt="Photo of {{item.Restaurant}}">
+					<!-- <div class="info"> -->
+							<!-- The below is | is a filter and makes the data appear as a filter -->
+
+					<!-- Keeling change of hvalue it was h2,h3,h3  -->
+				  	<h2>{{item.Restaurant}}</h2>
+				  	<h5>{{item.Distance + " mi"}}</h5>
+				 	<h5>{{item.Price}}</h5>
+				 	<div class="spacingSmall"></div>
+				 	
+				 	<!-- Keeling change moved button to bottom -->
+				 	<!-- Keeling change from class 'btn' to 'button2' which is 
+				 	near the bottom of style_kathleen.css under Justin Classes -->
+				 	  	<a ng-href="#/create_event/{{restaurants.indexOf(item)}}" class="button2 btn-primary btn-lg">
+  					<span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>  Create Event
+  				</a>
+            	</a>
+			</li>
+		</ul>
+	</div>

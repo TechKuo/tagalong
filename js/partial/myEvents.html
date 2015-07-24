@@ -1,0 +1,136 @@
+<body ng-app="myApp" ng-controller="MyEventsController" >
+	<!-- Top search bar -->
+	<div class="search">
+		<h1>My Events</h1>
+		<label>search: </label>
+		<input ng-model="query" placeholder="Search my events" autofocus>
+	</div>
+
+
+	<!-- List of restaurants -->
+	<div class="container">
+		<!-- Jumbotron -->
+	    <div class="jumbotron" style="padding: 15px;">
+	        <h2 class="text-center">Hosting</h2>
+	    </div>
+		<ul class="collapsible" data-collapsible="expandable">
+			<li ng-init="testFunction()" ng-repeat="event in hostingEvents">
+			<div class="collapsible-header" style="height: auto">
+		    	<!--<a ng-href="#/myEvents/{{events.indexOf(item)}}">-->
+			   	<!-- <img ng-src="images/Restaurant Logos/{{value.Restaurant}}.jpg" alt="Photo of {{value.Restaurant}}"> -->
+				<h2>{{event.restaurantName}}</h2>
+				<br>
+			</div>
+			<div class="collapsible-body">
+				<h3>Address: {{event.restaurantAddress}}</h2>
+				<h3>Date: {{event.date}}</h3>
+				<h3>Time: {{event.startTime}}-{{event.endTime}}</h3>
+				<h3>Host: {{event.hostName}}</h3>
+				<h3>Attending: ({{event.goingList.split(", ").length}}) : {{event.goingList}}</h3>
+				<h3>Pending ({{event.invitedList.split(", ").length}}) : {{event.invitedList}}</h3>
+				<h3>{{event.public ? "Public" : "Private"}}</h3>
+				<h5>Comments: {{event.comments}}</h5>
+			</div>
+				<!-- Add popover to show names of people going -->
+				<!--</a> -->
+				<!-- Supposed to be popover for people who are invited -
+				<a class="a-right tooltipped" data-toggle="tooltip" data-tooltip="{{item.People}}" title="{{item.People}}" data-position="right" ng-click="onMyClick()">
+  					<h3 style="max-width=auto">Invited: {{item.Invited}}</h3>
+				</a>-->
+		</li>
+		</ul>
+
+		<!-- Jumbotron -->
+	    <div class="jumbotron" style="padding: 15px;">
+	        <h2 class="text-center">Going</h2>
+	    </div>
+		<ul class="collapsible" data-collapsible="expandable">
+			<li ng-init="testFunction()" ng-repeat="event in acceptedEvents">
+			<div class="collapsible-header" style="height: auto">
+		    	<!--<a ng-href="#/myEvents/{{events.indexOf(item)}}">-->
+			   	<!-- <img ng-src="images/Restaurant Logos/{{value.Restaurant}}.jpg" alt="Photo of {{value.Restaurant}}"> -->
+				<h2>{{event.restaurantName}}</h2>
+				<br>
+			</div>
+			<div class="collapsible-body">
+				<h3>Address: {{event.restaurantAddress}}</h2>
+				<h3>Date: {{event.date}}</h3>
+				<h3>Time: {{event.startTime}}-{{event.endTime}}</h3>
+				<h3>Host: {{event.hostName}}</h3>
+				<h3>Attending: ({{event.goingList.split(", ").length}}) : {{event.goingList}}</h3>
+				<h3>Pending ({{event.invitedList.split(", ").length}}) : {{event.invitedList}}</h3>
+				<h3>{{event.public ? "Public" : "Private"}}</h3>
+				<h5>Comments: {{event.comments}}</h5>
+				<!-- Add popover to show names of people going -->
+				<!--</a> -->
+				<!-- Supposed to be popover for people who are invited -
+				<a class="a-right tooltipped" data-toggle="tooltip" data-tooltip="{{item.People}}" title="{{item.People}}" data-position="right" ng-click="onMyClick()">
+  					<h3 style="max-width=auto">Invited: {{item.Invited}}</h3>
+				</a>-->
+			</div>
+		</li>
+		</ul>
+	
+		<!-- Jumbotron -->
+	    <div class="jumbotron" style="padding: 15px;">
+	        <h2 class="text-center">Invited</h2>
+	    </div>
+		<ul class="collapsible" data-collapsible="expandable">
+			<li ng-init="testFunction()" ng-repeat="event in invitedEvents">
+			<div class="collapsible-header" style="height: auto">
+		    	<!--<a ng-href="#/myEvents/{{events.indexOf(item)}}">-->
+			   	<!-- <img ng-src="images/Restaurant Logos/{{value.Restaurant}}.jpg" alt="Photo of {{value.Restaurant}}"> -->
+				<h2>{{event.restaurantName}}</h2>
+				<br>
+			</div>
+			<div class="collapsible-body">
+				<h3>Address: {{event.restaurantAddress}}</h2>
+				<h3>Date: {{event.date}}</h3>
+				<h3>Time: {{event.startTime}}-{{event.endTime}}</h3>
+				<h3>Host: {{event.hostName}}</h3>
+				<h3>Attending: ({{event.goingList.split(", ").length}}) : {{event.goingList}}</h3>
+				<h3>Pending ({{event.invitedList.split(", ").length}}) : {{event.invitedList}}</h3>
+				<h3>{{event.public ? "Public" : "Private"}}</h3>
+				<h5>Comments: {{event.comments}}</h5>
+				<button ng-click="acceptInvite(event)" type="button" 
+                  	class="btn btn-primary btn-block btn-signin">
+		   		 	<!-- Keep space between word and icon -->
+                	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>  Tagalong
+           		</button>
+           		<button ng-click="declineInvite(event)" type="button" 
+                  	class="btn btn-primary btn-block btn-signin" style="margin-top:20px">
+		   		 	<!-- Keep space between word and icon -->
+                	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>  Decline
+           		</button>
+				<!-- Add popover to show names of people going -->
+				<!--</a> -->
+				<!-- Supposed to be popover for people who are invited -
+				<a class="a-right tooltipped" data-toggle="tooltip" data-tooltip="{{item.People}}" title="{{item.People}}" data-position="right" ng-click="onMyClick()">
+  					<h3 style="max-width=auto">Invited: {{item.Invited}}</h3>
+				</a>-->
+			</div>
+		</li>
+		</ul>
+
+	</div>
+
+
+	<script>
+	    $(document).ready(function(){
+	    $('.collapsible').collapsible({
+	      accordion : false,  // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+	      
+	    });
+	    console.log('test')
+	  });
+
+	    </script>
+
+	<!--<script> 
+	//         $(document).ready(function(){
+	//         	$(".tooltipped").tooltip({delay:50});
+	//         });
+ //    </script> -->
+
+
+</body>

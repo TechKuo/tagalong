@@ -3,29 +3,7 @@
 	<h1>Browse Events</h1>
 	<label>search: </label>
 	<input ng-model="query" placeholder="Browse public events" autofocus> 
-
-
-
 </div>
-
-
-<!-- List of restaurants -->
-<!-- <div class="container">
-	<ul class="list-group">
-
-		<li class="list-group-item" ng-repeat="item in browseEvents | filter: query | orderBy : browseEventsOrder ">
-			<span ng-class-odd="'odd'" ng-class-even="'even'">
-
-				<a ng-href="{{item.Website}}">
-					<h2>{{item.Restaurant}}</h2>
-				</a>
-				<h3>{{item.Date}}{{item.Day}}</h3>
-				<h3>{{item.Time}}</h3>
-				<h3>Attending: {{item.Going}}</h3>
-				<h3>Invited: {{item.Invited}}</h3>            
-		</li>
-	</ul>
-</div> -->
 
 
   <ul class="collapsible" data-collapsible="expandable" >
@@ -39,6 +17,7 @@
 
 			<h3>Attending: {{item.Going}}</h3>
 			<h3>Invited: {{item.Invited}}</h3>
+			<h3>Comments: {{item.Comments}}</h3>
       	
       </div>
     </li>

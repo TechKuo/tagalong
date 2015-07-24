@@ -1,0 +1,33 @@
+[
+  {
+    "name":"Kathleen Morgan",
+    "shortname":"1Kathleen_Morgan",
+    "reknown":"Developer",
+    "bio":"Kathleen attends the University of Texas in Austin. "},
+  {
+    "name":"Justin Keeling",
+    "shortname":"2Justin_Keeling",
+    "reknown":"Developer",
+    "bio":"Justin attends the University of Texas in Dallas. "
+  },
+  {
+    "name":"Tech Kuo",
+    "shortname":"3Tech_Kuo",
+    "reknown":"Developer",
+    "bio":"Tech attends Cornell University."
+  },
+  {
+    "name":"Claire Weldon",
+    "shortname":"4Claire_Weldon",
+    "reknown":"Product Owner",
+    "bio":"Claire Weldon attends Texas A&M University."
+  },
+  {
+    "name":"Rukshinie Fernando",
+    "shortname":"5Rukshinie_Fernando",
+    "reknown":"Scrum Master",
+    "bio":"Rukshinie attends the University of Texas in Austin."
+  }
+
+]
+
